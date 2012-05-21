@@ -29,7 +29,7 @@ In heyday-wkhtmltopdf the main functionality is achieved through the idea of Inp
 
 Inputters provide different methods of collecting HTML input for PDF generation.
 
-Outputters provide different methods of outputting the rendered pdf file.
+Outputters provide different methods of outputting the rendered PDF file.
 
 To successfully produce a PDF you must pass an inputter and an outputter into HeydayWkHtmlToPdf and then process.
 
