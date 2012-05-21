@@ -79,7 +79,6 @@ class HeydayWkHtmlToPdf
 
 		//do some special stuff with WKPDF if options are set
 
-
 		$wkpdf = new WKPDF();
 
 		if (!self::$bin) {
