@@ -19,11 +19,13 @@ In heyday-wkhtmltopdf the main functionality is achieved through the idea of Inp
 - HeydayWkHtmlToPdfRequestInput
 - HeydayWkHtmlToPdfTemplateInput
 - HeydayWkHtmlToPdfUrlInput
+- HeydayWkHtmlToPdfStringInput
 
 ###Current outputters
 
 - HeydayWkHtmlToPdfBrowserOutput
 - HeydayWkHtmlToPdfFileOutput
+- HeydayWkHtmlToPdfStringOutput
 
 Inputters provide different methods of collecting HTML input for PDF generation.
 

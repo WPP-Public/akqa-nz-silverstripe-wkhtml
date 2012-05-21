@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdf implements HeydayWkHtmlToPdfOutputter
+class HeydayWkHtmlToPdfStringOutput implements HeydayWkHtmlToPdfOutputter
 {
 
 	public function process(WKPDF $wkpdf, HeydayWkHtmlToPdfInputter $inputter)
