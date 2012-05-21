@@ -37,6 +37,13 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
+	public function getTemplate()
+	{
+
+		return $this->template;
+
+	}
+
 	public function setTemplateFromString($templateFromString = true)
 	{
 
@@ -61,6 +68,13 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 
 		}
 
+	}
+
+	public function getData()
+	{
+
+		return $this->data;
+		
 	}
 
 	public function process($data = false)

@@ -3,7 +3,9 @@
 class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 {
 
-	public function __construct($filename)
+	protected $embed = false;
+
+	public function __construct($filename, $embed = false)
 	{
 
 		if (is_string($filename)) {
@@ -16,6 +18,19 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 
 		}
 
+		if ($embed) {
+
+			$this->setEmbed();
+
+		}
+
+	}
+
+	public function setEmbed()
+	{
+
+		$this->embed = true;
+
 	}
 
 	public function process(WKPDF $wkpdf, HeydayWkHtmlToPdfInputter $inputter)
@@ -23,7 +38,7 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 
 		$wkpdf->set_html($inputter->process());
 		$wkpdf->render();
-		$wkpdf->output(WKPDF::$PDF_EMBEDDED, $this->filename);
+		$wkpdf->output($this->embed ? WKPDF::$PDF_EMBEDDED : WKPDF::$PDF_DOWNLOAD, $this->filename);
 
 	}
 

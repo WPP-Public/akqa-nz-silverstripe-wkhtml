@@ -27,6 +27,13 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
+	public function getRequest()
+	{
+
+		return $this->request;
+
+	}
+
 	public function setSession(Session $session)
 	{
 

@@ -34,6 +34,13 @@ class HeydayWkHtmlToPdfUrlInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
+	public function getUrl()
+	{
+
+		return $this->url;
+
+	}
+
 	public function process()
 	{
 
