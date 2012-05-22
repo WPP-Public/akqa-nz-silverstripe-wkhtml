@@ -40,6 +40,8 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 		$wkpdf->render();
 		$wkpdf->output($this->embed ? WKPDF::$PDF_EMBEDDED : WKPDF::$PDF_DOWNLOAD, $this->filename);
 
+		return true;
+
 	}
 
 }
