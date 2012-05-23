@@ -1,0 +1,3 @@
+<FilesMatch "\.(html)$">
+	Deny from all
+</FilesMatch>

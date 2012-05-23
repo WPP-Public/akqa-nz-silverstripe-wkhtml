@@ -7,7 +7,8 @@ class HeydayWkHtmlToPdfController extends Controller
 
 	static $allowed_actions = array(
 		'index',
-		'test'
+		'test',
+		'external'
 	);
 
 	public function init()
@@ -29,14 +30,15 @@ class HeydayWkHtmlToPdfController extends Controller
 
 		echo implode(PHP_EOL, array(
 			'Commands available:',
-			'sake wkhtmltopdf/test'
+			'sake wkhtmltopdf/test',
+			'sake wkhtmltopdf/external'
 		)), PHP_EOL;
 
 		exit;
 
 	}
 
-	public function test()
+	public function template_to_random_file()
 	{
 
 		HeydayWkHtmlToPdf::get_instance(
@@ -59,4 +61,17 @@ class HeydayWkHtmlToPdfController extends Controller
 
 	}
 
+	public function external()
+	{
+
+		HeydayWkHtmlToPdf::get_instance(
+			new HeydayWkHtmlToPdfUrlInput(
+				'http://lesswrong.com/lw/jg/planning_fallacy/'
+			),
+			new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/lesswrong.pdf') 
+		)->process();
+
+	}
+
 }
+
