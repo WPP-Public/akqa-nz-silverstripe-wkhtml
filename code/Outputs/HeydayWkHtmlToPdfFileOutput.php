@@ -15,7 +15,7 @@ class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
 				$gen = new RandomGenerator;
 				$this->path = realpath($path) . DIRECTORY_SEPARATOR . md5(time() . $gen->generateHash('sha1')) . '.pdf';
 
-			} else if (is_writable($path)) {
+			} elseif (is_writable($path)) {
 
 				mkdir($path);
 
@@ -31,7 +31,7 @@ class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
 
 				user_error('File already exists. If you want to overwrite the file use the $force option');
 
-			} else if(!is_writable(dirname($path))) {
+			} elseif (!is_writable(dirname($path))) {
 
 				user_error('Directory is not writable');
 

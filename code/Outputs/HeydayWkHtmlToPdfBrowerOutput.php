@@ -10,7 +10,7 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 
 		if (is_string($filename)) {
 
-			$this->filename = $filename; 
+			$this->filename = $filename;
 
 		} else {
 

@@ -11,5 +11,5 @@ class HeydayWkHtmlToPdfStringOutput implements HeydayWkHtmlToPdfOutputter
 		return $wkpdf->output(WKPDF::$PDF_ASSTRING, false);
 
 	}
-	
+
 }

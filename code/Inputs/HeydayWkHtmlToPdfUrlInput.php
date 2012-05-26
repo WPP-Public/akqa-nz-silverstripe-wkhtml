@@ -20,7 +20,7 @@ class HeydayWkHtmlToPdfUrlInput implements HeydayWkHtmlToPdfInputter
 
 			$this->siteUrl = true;
 
-		} else if (Director::is_absolute_url($url)) {
+		} elseif (Director::is_absolute_url($url)) {
 
 			$this->siteUrl = false;
 

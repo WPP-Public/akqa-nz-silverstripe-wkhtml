@@ -58,7 +58,7 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 
 			$this->data = $data;
 
-		} else if (is_array($data)) {
+		} elseif (is_array($data)) {
 
 			$this->data = new ArrayData($data);
 
@@ -74,7 +74,7 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 	{
 
 		return $this->data;
-		
+
 	}
 
 	public function process($data = false)

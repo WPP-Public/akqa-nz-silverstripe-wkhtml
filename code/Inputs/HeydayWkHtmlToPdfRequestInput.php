@@ -15,7 +15,7 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 
 			$this->setSession($session);
 
-		} else if (is_array($session)) {
+		} elseif (is_array($session)) {
 
 			$this->setSession(new Session($session));
 
@@ -61,7 +61,7 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 
 			return ob_get_clean();
 
-		} else if (is_string($result)) {
+		} elseif (is_string($result)) {
 
 			return $result;
 

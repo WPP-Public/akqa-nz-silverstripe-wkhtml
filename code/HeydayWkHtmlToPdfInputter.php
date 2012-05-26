@@ -3,6 +3,4 @@
 interface HeydayWkHtmlToPdfInputter
 {
 
-
-	
 }

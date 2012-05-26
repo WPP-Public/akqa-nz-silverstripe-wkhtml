@@ -45,7 +45,7 @@ class HeydayWkHtmlToPdfController extends Controller
 				array('Name' => 'Tester'),
 				true
 			),
-			new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests', true) 
+			new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests', true)
 		)->process();
 
 		HeydayWkHtmlToPdf::get_instance(
