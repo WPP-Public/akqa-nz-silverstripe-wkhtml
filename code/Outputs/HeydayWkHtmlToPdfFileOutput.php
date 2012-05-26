@@ -29,7 +29,7 @@ class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
 
 			if (file_exists($path) && !$force) {
 
-				user_error('File already exists. If you want to overwrite the file use the $force option');
+				user_error('File already exists. If you want to overwrite the file use the $force :)');
 
 			} elseif (!is_writable(dirname($path))) {
 
@@ -50,7 +50,8 @@ class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
 
 		$wkpdf->set_html($inputter->process());
 		$wkpdf->render();
-		$wkpdf->output(WKPDF::$PDF_SAVEFILE, $this->path);
+
+		return $wkpdf->output(WKPDF::$PDF_SAVEFILE, $this->path) !== false ? $this->path : false;
 
 	}
 
