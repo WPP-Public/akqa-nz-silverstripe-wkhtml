@@ -3,4 +3,6 @@
 interface HeydayWkHtmlToPdfInputter
 {
 
+	public function process();
+
 }
