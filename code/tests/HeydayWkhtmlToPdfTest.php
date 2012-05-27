@@ -58,26 +58,21 @@ class HeydayWkhtmlToPdfTest extends SapphireTest
 
 		$this->assertEquals($input->process(), 'Some content Something');
 
-
 		$input = new HeydayWkHtmlToPdfTemplateInput('Something $Name', array('Name' => 'Something'), true);
 
 		$this->assertEquals($input->process(), 'Something Something');
-
 
 		$input = new HeydayWkHtmlToPdfTemplateInput('Something', false, true);
 
 		$this->assertEquals($input->process(), 'Something');
 
-
 		$input = new HeydayWkHtmlToPdfTemplateInput('Something');
 
 		$this->assertEquals($input->getTemplate(), 'Something');
 
-
 		$input = new HeydayWkHtmlToPdfTemplateInput('HeydayWkHtmlToPdfTemplateInput', new ArrayData(array('Name' => 'Something')));
 
 		$this->assertEquals($input->process(), 'Some content Something');
-
 
 		$input = new HeydayWkHtmlToPdfTemplateInput('HeydayWkHtmlToPdfTemplateInput');
 
@@ -94,7 +89,6 @@ class HeydayWkhtmlToPdfTest extends SapphireTest
 
 		$this->assertEquals($input->process(), $controller->testcontent());
 
-
 		$input = new HeydayWkHtmlToPdfUrlInput('http://heyday.co.nz/');
 
 		$this->assertEquals($input->process(), file_get_contents('http://heyday.co.nz/'));
@@ -104,8 +98,6 @@ class HeydayWkhtmlToPdfTest extends SapphireTest
 	public function testBrowserOutput()
 	{
 
-		
-		
 	}
 
 }
