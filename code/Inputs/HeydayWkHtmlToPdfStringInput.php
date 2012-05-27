@@ -5,10 +5,14 @@ class HeydayWkHtmlToPdfStringInput implements HeydayWkHtmlToPdfInputter
 
 	protected $string = false;
 
-	public function __construct($string)
+	public function __construct($string = false)
 	{
 
-		$this->setString($string);
+		if ($string) {
+
+			$this->setString($string);
+
+		}
 
 	}
 

@@ -1,6 +1,6 @@
 #Heyday wkhtmltopdf
 
-This module provides a silverstripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
+This module provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
 
 ##Requirements
 
@@ -96,6 +96,15 @@ To successfully produce a PDF you must pass an inputter and an outputter into He
 		new HeydayWkHtmlToPdfBrowserOutput('Output.pdf')
 	)->process();
 
+##Unit Testing
+
+If you have `phpunit` installed you can run `heyday-wkhtmltopdf`'s unit tests to see if everything is functioning correctly.
+
+###Running the unit tests
+
+From the command line:
+	
+	./sake dev/tests/module/heyday-wkhtmltopdf
 
 ##Sources:
 

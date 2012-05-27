@@ -33,6 +33,13 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 
 	}
 
+	public function getEmbed()
+	{
+
+		return $this->embed;
+
+	}
+
 	public function process(WKPDF $wkpdf, HeydayWkHtmlToPdfInputter $inputter)
 	{
 
