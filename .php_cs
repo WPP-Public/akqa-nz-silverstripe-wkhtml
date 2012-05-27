@@ -2,7 +2,6 @@
 
 $finder = Symfony\CS\Finder\DefaultFinder::create()
     ->name('*.php')
-    ->name('*.phtml')
     ->exclude(array(
         'code/ThirdParty'
     ))
