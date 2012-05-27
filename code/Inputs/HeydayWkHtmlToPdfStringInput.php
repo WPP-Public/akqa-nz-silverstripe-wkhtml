@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfStringInput implements HeydayWhHtmlToPdfInputter
+class HeydayWkHtmlToPdfStringInput implements HeydayWkHtmlToPdfInputter
 {
 
 	protected $string = false;

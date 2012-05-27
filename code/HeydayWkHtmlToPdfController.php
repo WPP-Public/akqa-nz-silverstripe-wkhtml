@@ -8,7 +8,8 @@ class HeydayWkHtmlToPdfController extends Controller
 	static $allowed_actions = array(
 		'index',
 		'test',
-		'external'
+		'external',
+		'testcontent'
 	);
 
 	public function init()
@@ -70,6 +71,13 @@ class HeydayWkHtmlToPdfController extends Controller
 			),
 			new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/lesswrong.pdf')
 		)->process();
+
+	}
+
+	public function testcontent()
+	{
+
+		return '<html><body><h1>Test</h1></body></html>';
 
 	}
 

@@ -51,7 +51,7 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 	public function process()
 	{
 
-		$result = Director::handleRequest($this->request, $this->session);
+		$result = HeydayWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
 
 		if ($result instanceof SS_HTTPResponse) {
 
