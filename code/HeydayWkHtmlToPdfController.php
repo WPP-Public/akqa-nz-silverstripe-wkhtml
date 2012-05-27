@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Provies content output for unit tests.
+ */
 class HeydayWkHtmlToPdfController extends Controller
 {
 

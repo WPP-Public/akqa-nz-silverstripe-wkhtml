@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Inputter interface
+ */
 interface HeydayWkHtmlToPdfInputter
 {
 

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Outputter interface
+ */
 interface HeydayWkHtmlToPdfOutputter
 {
 

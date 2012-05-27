@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class to overwrite director so handleRequest can be called by HeydayWkHtmlToPdfRequestInput
+ */
 class HeydayWkHtmlToPdfDirector extends Director
 {
 

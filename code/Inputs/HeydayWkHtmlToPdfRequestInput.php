@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Takes a SS_HTTPRequest and produces html input for PDF
+ */
 class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 {
 
