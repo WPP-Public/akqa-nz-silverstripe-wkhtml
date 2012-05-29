@@ -2,6 +2,10 @@
 
 This module provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
 
+##License
+
+This project is licensed under an MIT license which can be found at `heyday-wkhtmlprof/LICENSE`
+
 ##Requirements
 
 You will require a [wkhtmltopdf binary](http://code.google.com/p/wkhtmltopdf/downloads/list) to use heyday-wkhtmltopdf
