@@ -23,8 +23,15 @@ class HeydayWkHtmlToPdfTemplateHelper extends ViewableData
 
 }
 
-class HeydayWkHtmlToPdfTemplateHelper_ImageExtension extends Extension
+class HeydayWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDecorator
 {
+
+    public function extraStatics()
+    {
+
+        return array();
+
+    }
 
     public function Base64()
     {
