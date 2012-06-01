@@ -1,7 +1,6 @@
 <?php
 
-define('__DIR__', dirname(__FILE__) . DIRECTORY_SEPARATOR);
-require_once __DIR__ . '/ThirdParty/wkhtmltopdf.php';
+require_once dirname(__FILE__) . '/ThirdParty/wkhtmltopdf.php';
 
 /**
  * HeydayWkHtmlToPdf provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
