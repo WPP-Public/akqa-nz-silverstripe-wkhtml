@@ -1,5 +1,6 @@
 <?php
 
+define('__DIR__', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 require_once __DIR__ . '/ThirdParty/wkhtmltopdf.php';
 
 /**
