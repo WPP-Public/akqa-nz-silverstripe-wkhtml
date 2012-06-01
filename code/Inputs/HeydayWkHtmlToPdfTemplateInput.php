@@ -86,6 +86,10 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 
 		}
 
+		$this->data->setField('Helper', new HeydayWkHtmlToPdfTemplateHelper());
+
+		HeydayLog::log($this->data);
+
 		$viewer = $this->templateFromString ? new SSViewer_FromString($this->template) : new SSViewer($this->template);
 
 		return $viewer->process($this->data);
