@@ -5,9 +5,11 @@ class HeydayWkHtmlToPdfUrlInput implements HeydayWkHtmlToPdfInputter
 
 	protected $url = false;
 	protected $siteUrl = true;
+	protected $useUrlDirectly = false;
 
-	public function __construct($url)
+	public function __construct($url,$useUrlDirectly = false)
 	{
+		$this->useUrlDirectly = $useUrlDirectly;
 
 		$this->setUrl($url);
 
@@ -41,20 +43,23 @@ class HeydayWkHtmlToPdfUrlInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
-	public function process()
+	public function process(WKPDF $wkpdf)
 	{
+		if($this->useUrlDirectly){
 
-		if ($this->siteUrl) {
+			$wkpdf->set_url($this->url);
+
+		}elseif ($this->siteUrl) {
 
 			ob_start();
 
 			Director::direct($this->url);
 
-			return ob_get_clean();
+			$wkpdf->set_html(ob_get_clean());
 
 		} else {
 
-			return @file_get_contents($this->url);
+			$wkpdf->set_html(@file_get_contents($this->url));
 
 		}
 

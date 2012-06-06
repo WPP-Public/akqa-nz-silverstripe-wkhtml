@@ -6,6 +6,6 @@
 interface HeydayWkHtmlToPdfInputter
 {
 
-	public function process();
+	public function process(WKPDF $wkpdf);
 
 }

@@ -30,10 +30,10 @@ class HeydayWkHtmlToPdfStringInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
-	public function process()
+	public function process(WKPDF $wkpdf)
 	{
 
-		return $this->string;
+		$wkpdf->set_html($this->string);
 
 	}
 

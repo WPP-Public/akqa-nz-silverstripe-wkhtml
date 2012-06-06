@@ -317,8 +317,8 @@
 			$this->pdf=self::_pipeExec(
 				(self::_getOS()!='win' ? $this->cmd : 'cd '.escapeshellarg(dirname($this->cmd)).' && '.basename($this->cmd))
 				.(($this->copies>1)?' --copies '.(int)$this->copies:'')				// number of copies
-				.' --orientation '.escapeshellarg($this->orient)					// orientation
-				.' --page-size '.escapeshellarg($this->size)						// page size
+//				.' --orientation '.escapeshellarg($this->orient)					// orientation
+//				.' --page-size '.escapeshellarg($this->size)						// page size
 				.($this->toc?' --toc':'')											// table of contents
 				.($this->grayscale?' --grayscale':'')								// grayscale
 				.(($this->title!='')?' --title '.escapeshellarg($this->title):'')	// title

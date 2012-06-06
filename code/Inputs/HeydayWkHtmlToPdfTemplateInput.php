@@ -77,22 +77,14 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
-	public function process($data = false)
+	public function process(WKPDF $wkpd)
 	{
-
-		if ($data) {
-
-			$this->setData($data);
-
-		}
 
 		$this->data->setField('Helper', new HeydayWkHtmlToPdfTemplateHelper());
 
-		HeydayLog::log($this->data);
-
 		$viewer = $this->templateFromString ? new SSViewer_FromString($this->template) : new SSViewer($this->template);
 
-		return $viewer->process($this->data);
+		$wkpdf->set_html($viewer->process($this->data));
 
 	}
 

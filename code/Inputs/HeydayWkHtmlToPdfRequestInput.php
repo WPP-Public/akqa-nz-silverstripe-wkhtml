@@ -51,7 +51,7 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 
 	}
 
-	public function process()
+	public function process(WKPDF $wkpdf)
 	{
 
 		$result = HeydayWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
@@ -62,11 +62,11 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 
 			$result->output();
 
-			return ob_get_clean();
+			$wkpdf->set_html(ob_get_clean());
 
 		} elseif (is_string($result)) {
 
-			return $result;
+			$wkpdf->set_html($result);
 
 		} else {
 

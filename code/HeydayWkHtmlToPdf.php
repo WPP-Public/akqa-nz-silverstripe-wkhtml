@@ -122,7 +122,9 @@ class HeydayWkHtmlToPdf
 
 		$wkpdf->set_cmd( self::$bin );
 
-		return $this->outputter->process( $wkpdf, $this->inputter );
+		$this->inputter->process( $wkpdf );
+
+		return $this->outputter->process( $wkpdf );
 
 	}
 

@@ -45,10 +45,9 @@ class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
 
 	}
 
-	public function process(WKPDF $wkpdf, HeydayWkHtmlToPdfInputter $inputter)
+	public function process(WKPDF $wkpdf)
 	{
 
-		$wkpdf->set_html($inputter->process());
 		$wkpdf->render();
 
 		return $wkpdf->output(WKPDF::$PDF_SAVEFILE, $this->path) !== false ? $this->path : false;
