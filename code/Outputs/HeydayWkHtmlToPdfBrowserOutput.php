@@ -40,7 +40,7 @@ class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
 
 	}
 
-	public function process(WKPDF &$wkpdf)
+	public function process(WKPDF $wkpdf)
 	{
 
 		$wkpdf->render();
