@@ -23,12 +23,17 @@ class HeydayWkHtmlToPdf
 	protected $inputter = false;
 
 	/**
+	 * Arguments to be passed onto wkpdf
+	 */
+	protected $arguments = array();
+
+	/**
 	 * Convinience method for getting an instance of this class
 	 */
-	public static function get_instance( $input, $output )
+	public static function get_instance( $input, $output, $arguments = array() )
 	{
 
-		return new self( $input, $output );
+		return new self( $input, $output, $arguments );
 
 	}
 
@@ -55,7 +60,7 @@ class HeydayWkHtmlToPdf
 	/**
 	 * Constructor. Create the class and set the input and output it exists.
 	 */
-	public function __construct( $input = null, $output = null )
+	public function __construct( $input = null, $output = null, $arguments = array() )
 	{
 
 		if ($input instanceof HeydayWkHtmlToPdfInputter) {
@@ -69,6 +74,20 @@ class HeydayWkHtmlToPdf
 			$this->setOutputter( $output );
 
 		}
+
+		if(is_array($arguments) && count($arguments)){
+			$this->arguments = $arguments;
+		}
+
+	}
+
+	/**
+	 * Sets the arguments to be passed onto wkpdf
+	 */
+	public function setArguments($argmuments)
+	{
+
+		$this->arguments = $arguments;
 
 	}
 
@@ -112,7 +131,13 @@ class HeydayWkHtmlToPdf
 
 		$wkpdf = new WKPDF();
 
-		//TODO do some special stuff with WKPDF if options are set
+		if(count($this->arguments)){
+
+			foreach($this->arguments as $key => $value){
+				$wkpdf->args_add($key, $value);
+			}
+			
+		}
 
 		if ( !self::$bin ) {
 
