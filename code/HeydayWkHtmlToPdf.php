@@ -86,8 +86,15 @@ class HeydayWkHtmlToPdf
 	 */
 	public function setArguments($argmuments)
 	{
+		if(is_array($argmuments)){
 
-		$this->arguments = $arguments;
+			$this->arguments = $arguments;
+
+		}else{
+
+			user_error('Arguments must be an array');
+			
+		}
 
 	}
 
@@ -131,12 +138,12 @@ class HeydayWkHtmlToPdf
 
 		$wkpdf = new WKPDF();
 
-		if(count($this->arguments)){
+		if(is_array($this->arguments) && count($this->arguments)){
 
 			foreach($this->arguments as $key => $value){
 				$wkpdf->args_add($key, $value);
 			}
-			
+
 		}
 
 		if ( !self::$bin ) {
