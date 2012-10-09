@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
+class SilverStripeWkHtmlToPdfTemplateInput implements SilverStripeWkHtmlToPdfInputter
 {
 
 	protected $template = false;
@@ -80,7 +80,9 @@ class HeydayWkHtmlToPdfTemplateInput implements HeydayWkHtmlToPdfInputter
 	public function process(WKPDF $wkpdf)
 	{
 
-		$this->data->setField('Helper', new HeydayWkHtmlToPdfTemplateHelper());
+		$this->data->setField('Helper', new SilverStripeWkHtmlToPdfTemplateHelper());
+        
+        Requirements::clear();
 
 		$viewer = $this->templateFromString ? new SSViewer_FromString($this->template) : new SSViewer($this->template);
 

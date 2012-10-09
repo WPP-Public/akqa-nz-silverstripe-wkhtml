@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfFileOutput implements HeydayWkHtmlToPdfOutputter
+class SilverStripeWkHtmlToPdfFileOutput implements SilverStripeWkHtmlToPdfOutputter
 {
 
 	protected $path = false;

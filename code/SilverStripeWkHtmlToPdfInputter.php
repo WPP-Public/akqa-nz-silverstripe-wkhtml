@@ -3,7 +3,7 @@
 /**
  * Inputter interface
  */
-interface HeydayWkHtmlToPdfInputter
+interface SilverStripeWkHtmlToPdfInputter
 {
 
 	public function process(WKPDF $wkpdf);

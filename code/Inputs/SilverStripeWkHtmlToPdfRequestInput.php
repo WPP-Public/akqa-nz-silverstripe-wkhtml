@@ -3,7 +3,7 @@
 /**
  * Takes a SS_HTTPRequest and produces html input for PDF
  */
-class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
+class SilverStripeWkHtmlToPdfRequestInput implements SilverStripeWkHtmlToPdfInputter
 {
 
 	protected $request = false;
@@ -54,7 +54,7 @@ class HeydayWkHtmlToPdfRequestInput implements HeydayWkHtmlToPdfInputter
 	public function process(WKPDF $wkpdf)
 	{
 
-		$result = HeydayWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
+		$result = SilverStripeWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
 
 		if ($result instanceof SS_HTTPResponse) {
 

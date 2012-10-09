@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfTemplateHelper extends ViewableData
+class SilverStripeWkHtmlToPdfTemplateHelper extends ViewableData
 {
 
     public function EmbedCss($css)
@@ -23,7 +23,7 @@ class HeydayWkHtmlToPdfTemplateHelper extends ViewableData
 
 }
 
-class HeydayWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDecorator
+class SilverStripeWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDecorator
 {
 
     public function extraStatics()
@@ -36,7 +36,7 @@ class HeydayWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDecorator
     public function Base64()
     {
 
-        return singleton('HeydayWkHtmlToPdfTemplateHelper')->EmbedBase64Image('/' . $this->owner->getRelativePath());
+        return singleton('SilverStripeWkHtmlToPdfTemplateHelper')->EmbedBase64Image('/' . $this->owner->getRelativePath());
 
     }
 

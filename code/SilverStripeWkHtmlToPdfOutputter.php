@@ -3,7 +3,7 @@
 /**
  * Outputter interface
  */
-interface HeydayWkHtmlToPdfOutputter
+interface SilverStripeWkHtmlToPdfOutputter
 {
 
 	public function process(WKPDF $wkpdf);

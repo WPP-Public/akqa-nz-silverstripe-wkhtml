@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class to overwrite director so handleRequest can be called by HeydayWkHtmlToPdfRequestInput
+ * Class to overwrite director so handleRequest can be called by SilverStripeWkHtmlToPdfRequestInput
  */
-class HeydayWkHtmlToPdfDirector extends Director
+class SilverStripeWkHtmlToPdfDirector extends Director
 {
 
 	public static function handleRequest(SS_HTTPRequest $request, Session $session)

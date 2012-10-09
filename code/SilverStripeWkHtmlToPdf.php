@@ -3,9 +3,9 @@
 require_once dirname(__FILE__) . '/ThirdParty/wkhtmltopdf.php';
 
 /**
- * HeydayWkHtmlToPdf provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
+ * SilverStripeWkHtmlToPdf provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
  */
-class HeydayWkHtmlToPdf
+class SilverStripeWkHtmlToPdf
 {
 
 	/**
@@ -63,13 +63,13 @@ class HeydayWkHtmlToPdf
 	public function __construct( $input = null, $output = null, $arguments = array() )
 	{
 
-		if ($input instanceof HeydayWkHtmlToPdfInputter) {
+		if ($input instanceof SilverStripeWkHtmlToPdfInputter) {
 
 			$this->setInputter( $input );
 
 		}
 
-		if ($output instanceof HeydayWkHtmlToPdfOutputter) {
+		if ($output instanceof SilverStripeWkHtmlToPdfOutputter) {
 
 			$this->setOutputter( $output );
 
@@ -101,7 +101,7 @@ class HeydayWkHtmlToPdf
 	/**
 	 * Sets the outputter ensuring it implements the interface
 	 */
-	public function setOutputter( HeydayWkHtmlToPdfOutputter $outputter )
+	public function setOutputter( SilverStripeWkHtmlToPdfOutputter $outputter )
 	{
 
 		$this->outputter = $outputter;
@@ -111,7 +111,7 @@ class HeydayWkHtmlToPdf
 	/**
 	 * Sets the inputter ensuring it implements the interface
 	 */
-	public function setInputter( HeydayWkHtmlToPdfInputter $inputter )
+	public function setInputter( SilverStripeWkHtmlToPdfInputter $inputter )
 	{
 
 		$this->inputter = $inputter;
@@ -124,13 +124,13 @@ class HeydayWkHtmlToPdf
 	public function process()
 	{
 
-		if ( !$this->outputter || !$this->outputter instanceof HeydayWkHtmlToPdfOutputter ) {
+		if ( !$this->outputter || !$this->outputter instanceof SilverStripeWkHtmlToPdfOutputter ) {
 
 			user_error( 'Need to have an outputter set in order to output the PDF' );
 
 		}
 
-		if ( !$this->inputter || !$this->inputter instanceof HeydayWkHtmlToPdfInputter ) {
+		if ( !$this->inputter || !$this->inputter instanceof SilverStripeWkHtmlToPdfInputter ) {
 
 			user_error( 'Need to have an inputter set in order to get the content for the PDF' );
 

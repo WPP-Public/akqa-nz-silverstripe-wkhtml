@@ -3,7 +3,7 @@
 /**
  * Provies content output for unit tests.
  */
-class HeydayWkHtmlToPdfController extends Controller
+class SilverStripeWkHtmlToPdfController extends Controller
 {
 
 	static $url_segment = 'wkhtmltopdf';

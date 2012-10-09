@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfBrowserOutput implements HeydayWkHtmlToPdfOutputter
+class SilverStripeWkHtmlToPdfBrowserOutput implements SilverStripeWkHtmlToPdfOutputter
 {
 
 	protected $embed = false;

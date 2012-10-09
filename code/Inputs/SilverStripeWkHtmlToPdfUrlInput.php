@@ -1,6 +1,6 @@
 <?php
 
-class HeydayWkHtmlToPdfUrlInput implements HeydayWkHtmlToPdfInputter
+class SilverStripeWkHtmlToPdfUrlInput implements SilverStripeWkHtmlToPdfInputter
 {
 
 	protected $url = false;
