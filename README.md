@@ -1,10 +1,10 @@
-#Heyday wkhtmltopdf
+#Heyday silverstripe-wkhtmltopdf
 
 This module provides a SilverStripe-centric wrapper for the [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) project and php bindings.
 
 ##License
 
-This project is licensed under an MIT license which can be found at `heyday-wkhtmlprof/LICENSE`
+This project is licensed under an MIT license which can be found at `silverstripe-wkhtmlprof/LICENSE`
 
 ##Requirements
 
@@ -12,7 +12,7 @@ You will require a [wkhtmltopdf binary](http://code.google.com/p/wkhtmltopdf/dow
 
 ##Installation
 
-To install just drop the heyday-wkhtmltopdf directory into your SilverStripe root and run a ?flush=1
+To install just drop the silverstripe-wkhtmltopdf directory into your SilverStripe root and run a ?flush=1
 
 ##How to use
 
@@ -20,95 +20,95 @@ In heyday-wkhtmltopdf the main functionality is achieved through the idea of Inp
 
 ###Current inputters:
 
-- HeydayWkHtmlToPdfRequestInput
-- HeydayWkHtmlToPdfTemplateInput
-- HeydayWkHtmlToPdfUrlInput
-- HeydayWkHtmlToPdfStringInput
+- SilverStripeWkHtmlToPdfRequestInput
+- SilverStripeWkHtmlToPdfTemplateInput
+- SilverStripeWkHtmlToPdfUrlInput
+- SilverStripeWkHtmlToPdfStringInput
 
 ###Current outputters
 
-- HeydayWkHtmlToPdfBrowserOutput
-- HeydayWkHtmlToPdfFileOutput
-- HeydayWkHtmlToPdfStringOutput
+- SilverStripeWkHtmlToPdfBrowserOutput
+- SilverStripeWkHtmlToPdfFileOutput
+- SilverStripeWkHtmlToPdfStringOutput
 
 Inputters provide different methods of collecting HTML input for PDF generation.
 
 Outputters provide different methods of outputting the rendered PDF file.
 
-To successfully produce a PDF you must pass an inputter and an outputter into HeydayWkHtmlToPdf and then process.
+To successfully produce a PDF you must pass an inputter and an outputter into SilverStripeWkHtmlToPdf and then process.
 
 ##Examples
 
 ###Input from string template, Output to file with randomly generated name
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfTemplateInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfTemplateInput(
 			'<html><body><h1>Hello $Name</h1></body></html>',
 			array('Name' => 'Tester'),
 			true
 		),
-		new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests', true) 
+		new SilverStripeWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests', true) 
 	)->process();
 
 ###Input from string template, Output to specific file
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfTemplateInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfTemplateInput(
 			'<html><body><h1>Hello $Name</h1></body></html>',
 			array('Name' => 'Tester'),
 			true
 		),
-		new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/Output.pdf') 
+		new SilverStripeWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/Output.pdf') 
 	)->process();
 
 ###Input from string template, Output to specific file overwriting any existing file
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfTemplateInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfTemplateInput(
 			'<html><body><h1>Hello $Name</h1></body></html>',
 			array('Name' => 'Tester'),
 			true
 		),
-		new HeydayWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/Output.pdf', false, true) 
+		new SilverStripeWkHtmlToPdfFileOutput(dirname(__FILE__) . '/../tests/Output.pdf', false, true) 
 	)->process();
 
 ###Input from template file, Output to browser
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfTemplateInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfTemplateInput(
 			'PdfTemplate',
 			array('Name' => 'Tester')
 		),
-		new HeydayWkHtmlToPdfBrowserOutput('Output.pdf')
+		new SilverStripeWkHtmlToPdfBrowserOutput('Output.pdf')
 	)->process();
 
 ###Input from local silverstripe url, Output to browser
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfUrlInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfUrlInput(
 			'/pdf-page/'
 		),
-		new HeydayWkHtmlToPdfBrowserOutput('Output.pdf')
+		new SilverStripeWkHtmlToPdfBrowserOutput('Output.pdf')
 	)->process();
 
 ###Input from external html page, Output to browser
 
-	HeydayWkHtmlToPdf::get_instance(
-		new HeydayWkHtmlToPdfUrlInput(
+	SilverStripeWkHtmlToPdf::get_instance(
+		new SilverStripeWkHtmlToPdfUrlInput(
 			'http://heyday.co.nz/'
 		),
-		new HeydayWkHtmlToPdfBrowserOutput('Output.pdf')
+		new SilverStripeWkHtmlToPdfBrowserOutput('Output.pdf')
 	)->process();
 
 ##Unit Testing
 
-If you have `phpunit` installed you can run `heyday-wkhtmltopdf`'s unit tests to see if everything is functioning correctly.
+If you have `phpunit` installed you can run `silverstripe-wkhtmltopdf`'s unit tests to see if everything is functioning correctly.
 
 ###Running the unit tests
 
 From the command line:
 	
-	./sake dev/tests/module/heyday-wkhtmltopdf
+	./sake dev/tests/module/silverstripe-wkhtmltopdf
 
 ##Sources:
 
