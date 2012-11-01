@@ -1,0 +1,8 @@
+{
+    "name": "heyday/silverstripe-wkhtmltopdf",
+    "type": "silverstripe-module",
+    "require": {
+        "composer/installers": "1.0.0"
+    },
+    "minimum-stability": "dev"
+}
