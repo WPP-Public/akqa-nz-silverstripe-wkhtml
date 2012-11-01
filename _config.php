@@ -1,7 +1,7 @@
 <?php
 
 Director::addRules(70, array(
-	HeydayWkHtmlToPdfController::$url_segment . '//$Action/$ID/$OtherID' => 'HeydayWkHtmlToPdfController'
+	SilverStripeWkHtmlToPdfController::$url_segment . '//$Action/$ID/$OtherID' => 'SilverStripeWkHtmlToPdfController'
 ));
 
-Object::add_extension('Image', 'HeydayWkHtmlToPdfTemplateHelper_ImageExtension');
+Object::add_extension('Image', 'SilverStripeWkHtmlToPdfTemplateHelper_ImageExtension');
