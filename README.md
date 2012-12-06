@@ -14,16 +14,18 @@ You will require a [wkhtmltopdf binary](http://code.google.com/p/wkhtmltopdf/dow
 ##Regular install
 To install just drop the silverstripe-wkhtmltopdf directory into your SilverStripe root and run a ?flush=1
 
-##Cmposer
+##Composer
 Installing from composer is easy,
 
-Create or edit a composer.json file in the root of your SilverStripe project, and make sure the following is present.
+Create or edit a `composer.json` file in the root of your SilverStripe project, and make sure the following is present.
 
+```json
 {
     "require": {
         "heyday/silverstripe-wkhtmltopdf": "*"
     }
 }
+```
 After completing this step, navigate in Terminal or similar to the SilverStripe root directory and run composer install or composer update depending on whether or not you have composer already in use.
 
 ##How to use
