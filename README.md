@@ -11,8 +11,20 @@ This project is licensed under an MIT license which can be found at `silverstrip
 You will require a [wkhtmltopdf binary](http://code.google.com/p/wkhtmltopdf/downloads/list) to use heyday-wkhtmltopdf
 
 ##Installation
-
+##Regular install
 To install just drop the silverstripe-wkhtmltopdf directory into your SilverStripe root and run a ?flush=1
+
+##Cmposer
+Installing from composer is easy,
+
+Create or edit a composer.json file in the root of your SilverStripe project, and make sure the following is present.
+
+{
+    "require": {
+        "heyday/silverstripe-wkhtmltopdf": "*"
+    }
+}
+After completing this step, navigate in Terminal or similar to the SilverStripe root directory and run composer install or composer update depending on whether or not you have composer already in use.
 
 ##How to use
 
