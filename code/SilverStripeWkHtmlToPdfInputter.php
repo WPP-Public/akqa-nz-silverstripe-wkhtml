@@ -6,6 +6,10 @@
 interface SilverStripeWkHtmlToPdfInputter
 {
 
-	public function process(WKPDF $wkpdf);
+    /**
+     * @param WKPDF $wkpdf
+     * @return mixed
+     */
+    public function process(WKPDF $wkpdf);
 
 }

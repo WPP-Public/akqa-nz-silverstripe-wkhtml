@@ -3,38 +3,38 @@
 class SilverStripeWkHtmlToPdfStringInput implements SilverStripeWkHtmlToPdfInputter
 {
 
-	protected $string = false;
+    protected $string = false;
 
-	public function __construct($string = false)
-	{
+    public function __construct($string = false)
+    {
 
-		if ($string) {
+        if ($string) {
 
-			$this->setString($string);
+            $this->setString($string);
 
-		}
+        }
 
-	}
+    }
 
-	public function setString($string)
-	{
+    public function setString($string)
+    {
 
-		$this->string = $string;
+        $this->string = $string;
 
-	}
+    }
 
-	public function getString()
-	{
+    public function getString()
+    {
 
-		return $this->string;
+        return $this->string;
 
-	}
+    }
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$wkpdf->set_html($this->string);
+        $wkpdf->set_html($this->string);
 
-	}
+    }
 
 }

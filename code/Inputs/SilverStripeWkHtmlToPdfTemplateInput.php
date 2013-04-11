@@ -3,91 +3,91 @@
 class SilverStripeWkHtmlToPdfTemplateInput implements SilverStripeWkHtmlToPdfInputter
 {
 
-	protected $template = false;
-	protected $templateFromString = false;
-	protected $data = false;
+    protected $template = false;
+    protected $templateFromString = false;
+    protected $data = false;
 
-	public function __construct($template = false, $data = false, $templateFromString = false)
-	{
+    public function __construct($template = false, $data = false, $templateFromString = false)
+    {
 
-		if ($template) {
+        if ($template) {
 
-			$this->setTemplate($template);
+            $this->setTemplate($template);
 
-		}
+        }
 
-		if ($data) {
+        if ($data) {
 
-			$this->setData($data);
+            $this->setData($data);
 
-		}
+        }
 
-		if ($templateFromString) {
+        if ($templateFromString) {
 
-			$this->setTemplateFromString();
+            $this->setTemplateFromString();
 
-		}
+        }
 
-	}
+    }
 
-	public function setTemplate($template)
-	{
+    public function setTemplate($template)
+    {
 
-		$this->template = $template;
+        $this->template = $template;
 
-	}
+    }
 
-	public function getTemplate()
-	{
+    public function getTemplate()
+    {
 
-		return $this->template;
+        return $this->template;
 
-	}
+    }
 
-	public function setTemplateFromString($templateFromString = true)
-	{
+    public function setTemplateFromString($templateFromString = true)
+    {
 
-		$this->templateFromString = $templateFromString;
+        $this->templateFromString = $templateFromString;
 
-	}
+    }
 
-	public function setData($data)
-	{
+    public function setData($data)
+    {
 
-		if ($data instanceof ArrayData) {
+        if ($data instanceof ArrayData) {
 
-			$this->data = $data;
+            $this->data = $data;
 
-		} elseif (is_array($data)) {
+        } elseif (is_array($data)) {
 
-			$this->data = new ArrayData($data);
+            $this->data = new ArrayData($data);
 
-		} else {
+        } else {
 
-			user_error('Inputted data type not supported');
+            user_error('Inputted data type not supported');
 
-		}
+        }
 
-	}
+    }
 
-	public function getData()
-	{
+    public function getData()
+    {
 
-		return $this->data;
+        return $this->data;
 
-	}
+    }
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$this->data->setField('Helper', new SilverStripeWkHtmlToPdfTemplateHelper());
-        
+        $this->data->setField('Helper', new SilverStripeWkHtmlToPdfTemplateHelper());
+
         Requirements::clear();
 
-		$viewer = $this->templateFromString ? new SSViewer_FromString($this->template) : new SSViewer($this->template);
+        $viewer = $this->templateFromString ? new SSViewer_FromString($this->template) : new SSViewer($this->template);
 
-		$wkpdf->set_html($viewer->process($this->data));
+        $wkpdf->set_html($viewer->process($this->data));
 
-	}
+    }
 
 }

@@ -6,74 +6,74 @@
 class SilverStripeWkHtmlToPdfRequestInput implements SilverStripeWkHtmlToPdfInputter
 {
 
-	protected $request = false;
-	protected $session = false;
+    protected $request = false;
+    protected $session = false;
 
-	public function __construct(SS_HTTPRequest $request, $session = false)
-	{
+    public function __construct(SS_HTTPRequest $request, $session = false)
+    {
 
-		$this->request = $request;
+        $this->request = $request;
 
-		if ($session instanceof Session) {
+        if ($session instanceof Session) {
 
-			$this->setSession($session);
+            $this->setSession($session);
 
-		} elseif (is_array($session)) {
+        } elseif (is_array($session)) {
 
-			$this->setSession(new Session($session));
+            $this->setSession(new Session($session));
 
-		} else {
+        } else {
 
-			$this->setSession(new Session(null));
+            $this->setSession(new Session(null));
 
-		}
+        }
 
-	}
+    }
 
-	public function getRequest()
-	{
+    public function getRequest()
+    {
 
-		return $this->request;
+        return $this->request;
 
-	}
+    }
 
-	public function setSession(Session $session)
-	{
+    public function setSession(Session $session)
+    {
 
-		$this->session = $session;
+        $this->session = $session;
 
-	}
+    }
 
-	public function getSession()
-	{
+    public function getSession()
+    {
 
-		return $this->session;
+        return $this->session;
 
-	}
+    }
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$result = SilverStripeWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
+        $result = SilverStripeWkHtmlToPdfDirector::handleRequest($this->request, $this->session);
 
-		if ($result instanceof SS_HTTPResponse) {
+        if ($result instanceof SS_HTTPResponse) {
 
-			ob_start();
+            ob_start();
 
-			$result->output();
+            $result->output();
 
-			$wkpdf->set_html(ob_get_clean());
+            $wkpdf->set_html(ob_get_clean());
 
-		} elseif (is_string($result)) {
+        } elseif (is_string($result)) {
 
-			$wkpdf->set_html($result);
+            $wkpdf->set_html($result);
 
-		} else {
+        } else {
 
-			user_error('Can\'t handle output from request');
+            user_error('Can\'t handle output from request');
 
-		}
+        }
 
-	}
+    }
 
 }

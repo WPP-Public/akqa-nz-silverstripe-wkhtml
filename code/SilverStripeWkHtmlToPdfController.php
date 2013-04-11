@@ -6,44 +6,62 @@
 class SilverStripeWkHtmlToPdfController extends Controller
 {
 
-	static $url_segment = 'wkhtmltopdf';
+    /**
+     * @var string
+     */
+    static $url_segment = 'wkhtmltopdf';
 
-	static $allowed_actions = array(
-		'index',
-		'testcontent'
-	);
+    /**
+     * @var array
+     */
+    static $allowed_actions = array(
+        'index',
+        'testcontent'
+    );
 
-	public function init()
-	{
+    /**
+     *
+     */
+    public function init()
+    {
 
-		if (!Director::is_cli() && !Permission::check('ADMIN')) {
+        if (!Director::is_cli() && !Permission::check('ADMIN')) {
 
-			user_error('No access allowed');
-			exit;
+            user_error('No access allowed');
+            exit;
 
-		}
+        }
 
-		parent::init();
+        parent::init();
 
-	}
+    }
 
-	public function index()
-	{
+    /**
+     *
+     */
+    public function index()
+    {
 
-		echo implode(PHP_EOL, array(
-			'Commands available:',
-		)), PHP_EOL;
+        echo implode(
+            PHP_EOL,
+            array(
+                'Commands available:',
+            )
+        ), PHP_EOL;
 
-		exit;
+        exit;
 
-	}
+    }
 
-	public function testcontent()
-	{
+    /**
+     * @return string
+     */
+    public function testcontent()
+    {
 
-		return '<html><body><h1>Test</h1></body></html>';
+        return '<html><body><h1>Test</h1></body></html>';
 
-	}
+    }
 
 }
 

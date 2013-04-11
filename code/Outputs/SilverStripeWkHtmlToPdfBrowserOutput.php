@@ -3,51 +3,51 @@
 class SilverStripeWkHtmlToPdfBrowserOutput implements SilverStripeWkHtmlToPdfOutputter
 {
 
-	protected $embed = false;
+    protected $embed = false;
 
-	public function __construct($filename, $embed = false)
-	{
+    public function __construct($filename, $embed = false)
+    {
 
-		if (is_string($filename)) {
+        if (is_string($filename)) {
 
-			$this->filename = $filename;
+            $this->filename = $filename;
 
-		} else {
+        } else {
 
-			user_error('You must provide a filename');
+            user_error('You must provide a filename');
 
-		}
+        }
 
-		if ($embed) {
+        if ($embed) {
 
-			$this->setEmbed();
+            $this->setEmbed();
 
-		}
+        }
 
-	}
+    }
 
-	public function setEmbed()
-	{
+    public function setEmbed()
+    {
 
-		$this->embed = true;
+        $this->embed = true;
 
-	}
+    }
 
-	public function getEmbed()
-	{
+    public function getEmbed()
+    {
 
-		return $this->embed;
+        return $this->embed;
 
-	}
+    }
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$wkpdf->render();
-		$wkpdf->output($this->embed ? WKPDF::$PDF_EMBEDDED : WKPDF::$PDF_DOWNLOAD, $this->filename);
+        $wkpdf->render();
+        $wkpdf->output($this->embed ? WKPDF::$PDF_EMBEDDED : WKPDF::$PDF_DOWNLOAD, $this->filename);
 
-		return true;
+        return true;
 
-	}
+    }
 
 }

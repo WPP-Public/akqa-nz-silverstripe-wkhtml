@@ -3,55 +3,55 @@
 class SilverStripeWkHtmlToPdfFileOutput implements SilverStripeWkHtmlToPdfOutputter
 {
 
-	protected $path = false;
+    protected $path = false;
 
-	public function __construct($path, $random = false, $force = false)
-	{
+    public function __construct($path, $random = false, $force = false)
+    {
 
-		if ($random) {
+        if ($random) {
 
-			if (file_exists($path)) {
+            if (file_exists($path)) {
 
-				$gen = new RandomGenerator;
-				$this->path = realpath($path) . DIRECTORY_SEPARATOR . md5(time() . $gen->generateHash('sha1')) . '.pdf';
+                $gen = new RandomGenerator;
+                $this->path = realpath($path) . DIRECTORY_SEPARATOR . md5(time() . $gen->generateHash('sha1')) . '.pdf';
 
-			} elseif (is_writable($path)) {
+            } elseif (is_writable($path)) {
 
-				mkdir($path);
+                mkdir($path);
 
-			} else {
+            } else {
 
-				user_error('Directory doesn\'t exist and is not writable');
+                user_error('Directory doesn\'t exist and is not writable');
 
-			}
+            }
 
-		} else {
+        } else {
 
-			if (file_exists($path) && !$force) {
+            if (file_exists($path) && !$force) {
 
-				user_error('File already exists. If you want to overwrite the file use the $force :)');
+                user_error('File already exists. If you want to overwrite the file use the $force :)');
 
-			} elseif (!is_writable(dirname($path))) {
+            } elseif (!is_writable(dirname($path))) {
 
-				user_error('Directory is not writable');
+                user_error('Directory is not writable');
 
-			} else {
+            } else {
 
-				$this->path = $path;
+                $this->path = $path;
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$wkpdf->render();
+        $wkpdf->render();
 
-		return $wkpdf->output(WKPDF::$PDF_SAVEFILE, $this->path) !== false ? $this->path : false;
+        return $wkpdf->output(WKPDF::$PDF_SAVEFILE, $this->path) !== false ? $this->path : false;
 
-	}
+    }
 
 }

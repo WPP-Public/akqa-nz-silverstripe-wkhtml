@@ -6,11 +6,16 @@
 class SilverStripeWkHtmlToPdfDirector extends Director
 {
 
-	public static function handleRequest(SS_HTTPRequest $request, Session $session)
-	{
+    /**
+     * @param SS_HTTPRequest $request
+     * @param Session        $session
+     * @return mixed
+     */
+    public static function handleRequest(SS_HTTPRequest $request, Session $session)
+    {
 
-		return parent::handleRequest($request, $session);
+        return parent::handleRequest($request, $session);
 
-	}
+    }
 
 }

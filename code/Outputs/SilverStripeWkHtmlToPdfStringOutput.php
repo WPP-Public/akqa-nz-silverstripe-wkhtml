@@ -3,12 +3,13 @@
 class SilverStripeWkHtmlToPdfStringOutput implements SilverStripeWkHtmlToPdfOutputter
 {
 
-	public function process(WKPDF $wkpdf)
-	{
+    public function process(WKPDF $wkpdf)
+    {
 
-		$wkpdf->render();
-		return $wkpdf->output(WKPDF::$PDF_ASSTRING, false);
+        $wkpdf->render();
 
-	}
+        return $wkpdf->output(WKPDF::$PDF_ASSTRING, false);
+
+    }
 
 }

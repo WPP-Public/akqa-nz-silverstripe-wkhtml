@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * Class SilverStripeWkHtmlToPdfTemplateHelper
+ */
 class SilverStripeWkHtmlToPdfTemplateHelper extends ViewableData
 {
 
+    /**
+     * @param $css
+     * @return string
+     */
     public function EmbedCss($css)
     {
 
@@ -12,6 +19,10 @@ class SilverStripeWkHtmlToPdfTemplateHelper extends ViewableData
 
     }
 
+    /**
+     * @param $image
+     * @return string
+     */
     public function EmbedBase64Image($image)
     {
 
@@ -23,9 +34,15 @@ class SilverStripeWkHtmlToPdfTemplateHelper extends ViewableData
 
 }
 
+/**
+ * Class SilverStripeWkHtmlToPdfTemplateHelper_ImageExtension
+ */
 class SilverStripeWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDecorator
 {
 
+    /**
+     * @return array
+     */
     public function extraStatics()
     {
 
@@ -33,10 +50,15 @@ class SilverStripeWkHtmlToPdfTemplateHelper_ImageExtension extends DataObjectDec
 
     }
 
+    /**
+     * @return mixed
+     */
     public function Base64()
     {
 
-        return singleton('SilverStripeWkHtmlToPdfTemplateHelper')->EmbedBase64Image('/' . $this->owner->getRelativePath());
+        return singleton('SilverStripeWkHtmlToPdfTemplateHelper')->EmbedBase64Image(
+            '/' . $this->owner->getRelativePath()
+        );
 
     }
 
