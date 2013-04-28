@@ -1,14 +1,11 @@
-# Heyday silverstripe-wkhtml
+# Silverstripe Wkhtml - by Heyday
 
-This module provides a SilverStripe-centric wrapper for the [wkhtml](http://code.google.com/p/wkhtml/) project.
-
-## License
-
-This project is licensed under an MIT license which can be found at `silverstripe-wkhtml/LICENSE`
+This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtml/).
 
 ## Requirements
 
-You will require a [wkhtml binary](http://code.google.com/p/wkhtml/downloads/list) to use silverstripe-wkhtml
+* [Composer](http://getcomposer.org/)
+* [Wkhtml binary](http://code.google.com/p/wkhtml/downloads/list) either wkhtmltopdf or wkhtmltoimage
 
 ## Installation
 
@@ -175,4 +172,8 @@ new \Heyday\SilverStripe\WkHtml\Output\String();
 
     $ composer install --dev
     $ phpunit
+
+## License
+
+This project is licensed under an MIT license
 
