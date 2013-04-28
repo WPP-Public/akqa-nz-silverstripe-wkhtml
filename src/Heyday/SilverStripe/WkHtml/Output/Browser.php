@@ -69,6 +69,8 @@ class Browser implements OutputInterface
             $response->addHeader('Content-Transfer-Encoding', 'binary');
         }
 
+        $response->setBody($contents);
+
         return $response;
     }
 }

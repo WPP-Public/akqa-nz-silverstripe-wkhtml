@@ -25,7 +25,6 @@ class File implements OutputInterface
      */
     public function __construct($path, $overwrite = false)
     {
-        $this->overwrite = $overwrite;
         if (file_exists($path) && !$overwrite) {
             throw new \RuntimeException('File already exists.');
         } elseif (!is_writable(dirname($path))) {
@@ -33,6 +32,7 @@ class File implements OutputInterface
         } else {
             $this->path = $path;
         }
+        $this->overwrite = $overwrite;
     }
 
     /**
