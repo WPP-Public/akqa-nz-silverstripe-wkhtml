@@ -14,28 +14,29 @@ You will require a [wkhtml binary](http://code.google.com/p/wkhtml/downloads/lis
 
     $ composer require heyday/silverstripe-wkhtml
 
-
 ## How to use
 
-In silverstripe-wkhtml the main functionality is achieved through the idea of Inputs and Outputs.
+Four things are required to generate a pdf or an image:
 
-### Current inputs:
+* A instance of Knp\Snappy\GeneratorInterface This could be Pdf or Image
+* An Input
+* An Output
+* A Generator to glue it all together
+
+
+### Inputs provide html for a pdf or image:
 
 - Request
 - String
 - Template
 - Url
 
-### Current outputs:
+### Outputs output the pdf or image in different ways
 
 - Browser
 - File
 - RandomFile
 - String
-
-Inputs provide different methods of collecting HTML input for PDF or image generation.
-
-Outputs provide different methods of outputting the rendered PDF or image file.
 
 ## Examples
 
