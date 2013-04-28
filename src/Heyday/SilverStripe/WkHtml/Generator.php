@@ -13,46 +13,34 @@ class Generator
      */
     protected $generator;
     /**
-     * The outputter to use.
+     * @var Output\OutputInterface
      */
-    protected $outputter;
+    protected $output;
     /**
-     * The inputter to use
+     * @var Input\InputInterface
      */
-    protected $inputter;
+    protected $input;
     /**
-     * Constructor. Create the class and set the input and output it exists.
+     * @param GeneratorInterface $generator
+     * @param InputInterface     $input
+     * @param OutputInterface    $output
      */
     public function __construct(
         GeneratorInterface $generator,
-        InputInterface $inputter,
-        OutputInterface $outputter
+        InputInterface $input,
+        OutputInterface $output
     ) {
         $this->generator = $generator;
-        $this->inputter = $inputter;
-        $this->outputter = $outputter;
+        $this->input = $input;
+        $this->output = $output;
     }
     /**
-     * Sets the inputter ensuring it implements the interface
-     */
-    public function setInputter(InputInterface $inputter)
-    {
-        $this->inputter = $inputter;
-    }
-    /**
-     * Sets the outputter ensuring it implements the interface
-     */
-    public function setOutputter(OutputInterface $outputter)
-    {
-        $this->outputter = $outputter;
-    }
-    /**
-     * The almighty process method. This processes the pdf using the inputters and outputters that have been set.
+     * Processes the pdf using the input and output that have been set.
      */
     public function process()
     {
-        return $this->outputter->process(
-            $this->inputter->process(),
+        return $this->output->process(
+            $this->input->process(),
             $this->generator
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Heyday\SilverStripe\WkHtml\Input;
 
 /**

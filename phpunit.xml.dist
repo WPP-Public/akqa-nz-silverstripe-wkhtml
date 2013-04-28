@@ -12,8 +12,13 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="SilverStripe Wkhtmltopdf">
+        <testsuite name="SilverStripe WkHtml">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 </phpunit>
