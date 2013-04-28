@@ -18,25 +18,29 @@ You will require a [wkhtml binary](http://code.google.com/p/wkhtml/downloads/lis
 
 Four things are required to generate a pdf or an image:
 
-* A instance of Knp\Snappy\GeneratorInterface This could be Pdf or Image
-* An Input
-* An Output
-* A Generator to glue it all together
+* `Knp\Snappy\GeneratorInterface` The wrapper for wkhtmltopdf or wkhtmltoimage
+* `Heyday\SilverStripe\WkHtml\Input\InputInterface` to provide the html
+* `Heyday\SilverStripe\WkHtml\Output\OutputInterface` output the pdf or image in different ways
+* `Heyday\SilverStripe\WkHtml\Generator` to glue everything together
 
-
-### Inputs provide html for a pdf or image:
+### Available Inputs
 
 - Request
 - String
 - Template
 - Url
 
-### Outputs output the pdf or image in different ways
+### Available Outputs
 
 - Browser
 - File
 - RandomFile
 - String
+
+### Available Generators
+
+- Pdf
+- Image
 
 ## Examples
 
