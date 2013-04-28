@@ -43,16 +43,16 @@ Four things are required to generate a pdf or an image:
 
 ## Examples
 
-### Full example
+### Full example (from a controller action)
 
 ```php
-return (new \Heyday\SilverStripe\WkHtml\Generator(
+use Heyday\SilverStripe\WkHtml;
+$generator = new WkHtml\Generator(
     new \Knp\Snappy\Pdf('/pathto/wkhtmltopdf'),
-    new \Heyday\SilverStripe\WkHtml\Input\Request(
-        new SS_HTTPRequest('GET', '/')
-    ),
-    new \Heyday\SilverStripe\WkHtml\Output\Browser('test.pdf', 'application/pdf', true)
-))->process();
+    new WkHtml\Input\Url('/'),
+    new WkHtml\Output\Browser('test.pdf', 'application/pdf')
+);
+return $generator->process();
 ```
 
 ### Inputs
