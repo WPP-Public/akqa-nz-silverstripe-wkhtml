@@ -1,6 +1,6 @@
 {
-    "name": "heyday/silverstripe-wkhtmltopdf",
-    "description": "Provides Wkhtmltopdf functionality in SilverStripe",
+    "name": "heyday/silverstripe-wkhtml",
+    "description": "Provides Wkhtml functionality in SilverStripe",
     "type": "silverstripe-module",
     "license": "MIT",
     "autoload": {
