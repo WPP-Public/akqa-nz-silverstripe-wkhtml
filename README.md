@@ -12,7 +12,7 @@ You will require a [wkhtml binary](http://code.google.com/p/wkhtml/downloads/lis
 
 ## Installation
 
-    $ composer require heyday/silverstripe-wkhtml
+    $ composer require heyday/silverstripe-wkhtml:dev-master
 
 ## How to use
 
