@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/heyday/silverstripe-wkhtml.png?branch=master)](https://travis-ci.org/heyday/silverstripe-wkhtml)
 
-This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtml/).
+This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtmltopdf/).
 
 ## Requirements
 
 * [Composer](http://getcomposer.org/)
-* [Wkhtml binary](http://code.google.com/p/wkhtml/downloads/list) either wkhtmltopdf or wkhtmltoimage
+* [Wkhtml binary](http://code.google.com/p/wkhtmltopdf/downloads/list) either wkhtmltopdf or wkhtmltoimage
 
 ## Installation
 
