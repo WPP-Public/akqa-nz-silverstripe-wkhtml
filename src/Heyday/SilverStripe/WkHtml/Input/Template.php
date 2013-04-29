@@ -3,6 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Input;
 
 use ArrayData;
+use Heyday\SilverStripe\WkHtml\TemplateHelper;
 use Requirements;
 use SSViewer;
 use SSViewer_FromString;
@@ -97,7 +98,7 @@ class Template implements InputInterface
      */
     public function process()
     {
-        $this->data->setField('Helper', new SilverStripeWkHtmlToPdfTemplateHelper());
+        $this->data->setField('Helper', new TemplateHelper());
         Requirements::clear();
         $result = $this->getViewer()->process($this->data);
         Requirements::restore();
