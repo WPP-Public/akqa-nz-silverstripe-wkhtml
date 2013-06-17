@@ -44,5 +44,47 @@ class Generator
             $this->generator
         );
     }
+    /**
+     * @param \Knp\Snappy\GeneratorInterface $generator
+     */
+    public function setGenerator($generator)
+    {
+        $this->generator = $generator;
+    }
+    /**
+     * @return \Knp\Snappy\GeneratorInterface
+     */
+    public function getGenerator()
+    {
+        return $this->generator;
+    }
+    /**
+     * @param \Heyday\SilverStripe\WkHtml\Input\InputInterface $input
+     */
+    public function setInput($input)
+    {
+        $this->input = $input;
+    }
+    /**
+     * @return \Heyday\SilverStripe\WkHtml\Input\InputInterface
+     */
+    public function getInput()
+    {
+        return $this->input;
+    }
+    /**
+     * @param \Heyday\SilverStripe\WkHtml\Output\OutputInterface $output
+     */
+    public function setOutput($output)
+    {
+        $this->output = $output;
+    }
+    /**
+     * @return \Heyday\SilverStripe\WkHtml\Output\OutputInterface
+     */
+    public function getOutput()
+    {
+        return $this->output;
+    }
 }
 
