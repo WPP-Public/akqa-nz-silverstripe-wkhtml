@@ -2,6 +2,7 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
+use CacheCache\Cache;
 use Heyday\SilverStripe\WkHtml\Input\InputInterface;
 use Heyday\SilverStripe\WkHtml\Output\OutputInterface;
 use Knp\Snappy\GeneratorInterface;
@@ -28,21 +29,36 @@ class Generator
     public function __construct(
         GeneratorInterface $generator,
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
+        Cache $cache = null
     ) {
         $this->generator = $generator;
         $this->input = $input;
         $this->output = $output;
+        $this->cache = $cache;
     }
     /**
      * Processes the pdf using the input and output that have been set.
      */
     public function process()
     {
-        return $this->output->process(
-            $this->input->process(),
-            $this->generator
-        );
+        if (null !== $this->cache) {
+            $contents = $this->input->process();
+            if (!($output = $this->cache->load(md5($contents)))) {
+                $this->cache->save(
+                    $output = $this->output->process(
+                        $contents,
+                        $this->generator
+                    )
+                );
+            }
+        } else {
+            $output = $this->output->process(
+                $this->input->process(),
+                $this->generator
+            );
+        }
+        return $output;
     }
     /**
      * @param \Knp\Snappy\GeneratorInterface $generator
@@ -85,6 +101,20 @@ class Generator
     public function getOutput()
     {
         return $this->output;
+    }
+    /**
+     * @param \CacheCache\Cache $cache
+     */
+    public function setCache($cache)
+    {
+        $this->cache = $cache;
+    }
+    /**
+     * @return \CacheCache\Cache
+     */
+    public function getCache()
+    {
+        return $this->cache;
     }
 }
 

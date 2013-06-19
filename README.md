@@ -4,6 +4,8 @@
 
 This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtmltopdf/).
 
+A SilverStripe `2.4` version is available in the `1.0` branch.
+
 ## Requirements
 
 * [Composer](http://getcomposer.org/)
