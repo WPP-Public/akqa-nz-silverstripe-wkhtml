@@ -12,4 +12,4 @@ if (!file_exists($filename)) {
 $loader = require_once $filename;
 
 $loader->add('Heyday', __DIR__);
-$loader->addClassMap(Symfony\Component\ClassLoader\ClassMapGenerator::createMap(BASE_PATH . '/sapphire'));
+$loader->addClassMap(Symfony\Component\ClassLoader\ClassMapGenerator::createMap(BASE_PATH . '/framework'));
