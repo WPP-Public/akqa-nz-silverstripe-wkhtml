@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "46d9006c91380eefad26b47bab5f2b7b",
+    "hash": "482eea7ac9ff8666fc3064cd5649c412",
     "packages": [
         {
             "name": "composer/installers",
@@ -130,6 +130,47 @@
                 "wkhtmltopdf"
             ],
             "time": "2013-04-10 07:21:56"
+        },
+        {
+            "name": "maximebf/cachecache",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/maximebf/CacheCache.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/maximebf/CacheCache/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CacheCache": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                }
+            ],
+            "description": "Caching library for PHP5.3",
+            "homepage": "https://github.com/maximebf/CacheCache",
+            "keywords": [
+                "cache"
+            ],
+            "time": "2012-08-18 09:01:44"
         },
         {
             "name": "symfony/process",
@@ -574,23 +615,28 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "2.4.10",
+            "version": "3.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "2.4.10"
+                "reference": "a4189a6744a284e3ede32592525c045cedb7ff6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/2.4.10",
-                "reference": "2.4.10",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/a4189a6744a284e3ede32592525c045cedb7ff6a",
+                "reference": "a4189a6744a284e3ede32592525c045cedb7ff6a",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "*",
-                "php": ">=5.2.4"
+                "php": ">=5.3.2"
             },
             "type": "silverstripe-module",
+            "autoload": {
+                "classmap": [
+                    "tests/behat/features/bootstrap"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -605,13 +651,13 @@
                     "homepage": "http://silverstripe.org"
                 }
             ],
-            "description": "The SilverStripe Framework",
+            "description": "The SilverStripe framework",
             "homepage": "http://silverstripe.org",
             "keywords": [
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-02-18 00:03:57"
+            "time": "2013-06-19 12:30:54"
         },
         {
             "name": "symfony/class-loader",
@@ -717,6 +763,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "knplabs/knp-snappy": 20,
+        "silverstripe/framework": 20,
         "mikey179/vfsstream": 20
     },
     "platform": [
