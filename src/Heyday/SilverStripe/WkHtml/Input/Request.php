@@ -63,7 +63,8 @@ class Request implements InputInterface
         $result = $this->getHandleMethod()->invoke(
             null,
             $this->request,
-            $this->session
+            $this->session,
+            \DataModel::inst()
         );
         if ($result instanceof SS_HTTPResponse) {
             ob_start();

@@ -47,7 +47,7 @@ class Url implements InputInterface
     {
         if ($this->siteUrl) {
             ob_start();
-            Director::direct($this->url);
+            Director::direct($this->url, \DataModel::inst());
             return ob_get_clean();
         } else {
             return @file_get_contents($this->url);
