@@ -30,6 +30,7 @@ Four things are required to generate a pdf or an image:
 - String
 - Template
 - Url
+- Viewer
 
 ### Available Outputs
 
@@ -125,6 +126,23 @@ new \Heyday\SilverStripe\WkHtml\Input\Template(
         )
     ),
     true
+);
+```
+
+#### Viewer
+
+```php
+new \Heyday\SilverStripe\WkHtml\Input\Viewer(
+    new SSViewer(
+        array(
+            'Template'
+        )
+    ),
+    new ArrayData(
+        array(
+            'Var' => 'Hello'
+        )
+    )
 );
 ```
 
