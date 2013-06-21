@@ -25,6 +25,7 @@ class Generator
      * @param GeneratorInterface $generator
      * @param InputInterface     $input
      * @param OutputInterface    $output
+     * @param \CacheCache\Cache  $cache
      */
     public function __construct(
         GeneratorInterface $generator,
