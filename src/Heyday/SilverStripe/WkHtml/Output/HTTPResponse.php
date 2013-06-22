@@ -37,6 +37,10 @@ class HTTPResponse extends SS_HTTPResponse
         }
         echo $this->body;
     }
+    /**
+     * @param $header
+     * @return bool
+     */
     protected function shouldReplace($header)
     {
         if (array_key_exists($header, $this->replace)) {
