@@ -6,6 +6,7 @@ use ArrayData;
 use Heyday\SilverStripe\WkHtml\TemplateHelper;
 use Requirements;
 use SSViewer;
+use ViewableData;
 
 /**
  * Class Viewer
@@ -40,7 +41,7 @@ class Viewer implements InputInterface
      */
     public function setData($data)
     {
-        if ($data instanceof ArrayData) {
+        if ($data instanceof ViewableData) {
             $this->data = $data;
         } elseif (is_array($data)) {
             $this->data = new ArrayData($data);
@@ -60,7 +61,7 @@ class Viewer implements InputInterface
      */
     public function process()
     {
-        if ($this->data instanceof ArrayData) {
+        if ($this->data instanceof ViewableData) {
             $this->data->setField('Helper', new TemplateHelper());
         }
         Requirements::clear();
