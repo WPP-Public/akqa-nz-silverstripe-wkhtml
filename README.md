@@ -26,18 +26,18 @@ Four things are required to generate a pdf or an image:
 
 ### Available Inputs
 
-- Request
-- String
-- Template
-- Url
-- Viewer
+- Request (generates content from a request)
+- String (content is specified by a string)
+- Template (generates content from a SilverStripe template)
+- Url (generates content from a GET request to a Url)
+- Viewer (generates contetn from an SSViewer instance)
 
 ### Available Outputs
 
-- Browser
-- File
-- RandomFile
-- String
+- Browser (outputs to the browser)
+- File (outputs to a file)
+- RandomFile (outputs to a random filename)
+- String (outputs to a string)
 
 ### Available Generators
 
