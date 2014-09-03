@@ -13,7 +13,7 @@ A SilverStripe `2.4` version is available in the `1.0` branch.
 
 ## Installation
 
-    $ composer require "heyday/silverstripe-wkhtml:~1.0.5"
+    $ composer require "heyday/silverstripe-wkhtml:~1.0.6"
 
 ## How to use
 
