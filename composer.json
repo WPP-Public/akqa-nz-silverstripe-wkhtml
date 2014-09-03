@@ -10,7 +10,7 @@
 	},
 	"require": {
 		"composer/installers": "~1.0",
-		"knplabs/knp-snappy": "dev-master",
+		"knplabs/knp-snappy": "~0.2.0",
 		"symfony/process": "~2.2",
 		"maximebf/cachecache": "~1.0"
 	},
