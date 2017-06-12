@@ -4,7 +4,7 @@ namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
 
-class String implements OutputInterface
+class TextString implements OutputInterface
 {
     /**
      * @param                    $input

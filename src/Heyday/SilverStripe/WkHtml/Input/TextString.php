@@ -3,10 +3,10 @@
 namespace Heyday\SilverStripe\WkHtml\Input;
 
 /**
- * Class String
+ * Class TextString
  * @package Heyday\SilverStripe\WkHtml\Input
  */
-class String implements InputInterface
+class TextString implements InputInterface
 {
     /**
      * @var string

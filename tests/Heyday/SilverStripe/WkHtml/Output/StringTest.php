@@ -7,7 +7,7 @@ namespace Heyday\SilverStripe\WkHtml\Output;
 class StringTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var String
+     * @var TextString
      */
     protected $object;
 
@@ -17,7 +17,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-//        $this->object = new String;
+//        $this->object = new TextString;
     }
 
     /**
@@ -29,7 +29,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Heyday\SilverStripe\WkHtml\Output\String::process
+     * @covers Heyday\SilverStripe\WkHtml\Output\TextString::process
      * @todo   Implement testProcess().
      */
     public function testProcess()

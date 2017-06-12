@@ -9,7 +9,7 @@ namespace Heyday\SilverStripe\WkHtml\Input;
 class StringTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var String
+     * @var TextString
      */
     protected $object;
     /**
@@ -17,7 +17,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new String('test');
+        $this->object = new TextString('test');
     }
     /**
      *

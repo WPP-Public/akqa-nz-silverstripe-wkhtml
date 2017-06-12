@@ -27,7 +27,7 @@ Four things are required to generate a pdf or an image:
 ### Available Inputs
 
 - Request (generates content from a request)
-- String (content is specified by a string)
+- TextString (content is specified by a string)
 - Template (generates content from a SilverStripe template)
 - Url (generates content from a GET request to a Url)
 - Viewer (generates contetn from an SSViewer instance)
@@ -37,7 +37,7 @@ Four things are required to generate a pdf or an image:
 - Browser (outputs to the browser)
 - File (outputs to a file)
 - RandomFile (outputs to a random filename)
-- String (outputs to a string)
+- TextString (outputs to a string)
 
 ### Available Generators
 
@@ -82,7 +82,7 @@ new \Heyday\SilverStripe\WkHtml\Input\Request(
 #### String
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\String(
+new \Heyday\SilverStripe\WkHtml\Input\TextString(
     <<<HTML
 <h1>Title</h1>
 HTML
@@ -187,7 +187,7 @@ new \Heyday\SilverStripe\WkHtml\Output\RandomFile(BASE_PATH);
 #### String
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Output\String();
+new \Heyday\SilverStripe\WkHtml\Output\TextString();
 ```
 
 ##Unit Testing
