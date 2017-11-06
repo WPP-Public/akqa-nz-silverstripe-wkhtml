@@ -2,7 +2,7 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-use ViewableData;
+use SilverStripe\View\ViewableData;
 
 /**
  * Class TemplateHelper

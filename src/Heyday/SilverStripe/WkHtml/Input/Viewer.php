@@ -2,11 +2,11 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
-use ArrayData;
+use SilverStripe\View\ArrayData;
 use Heyday\SilverStripe\WkHtml\TemplateHelper;
-use Requirements;
-use SSViewer;
-use ViewableData;
+use SilverStripe\View\Requirements;
+use SilverStripe\View\SSViewer;
+use SilverStripe\View\ViewableData;
 
 /**
  * Class Viewer

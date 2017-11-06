@@ -7,6 +7,10 @@ use Heyday\SilverStripe\WkHtml\Input\InputInterface;
 use Heyday\SilverStripe\WkHtml\Output\OutputInterface;
 use Knp\Snappy\GeneratorInterface;
 
+/**
+ * Class Generator
+ * @package Heyday\SilverStripe\WkHtml
+ */
 class Generator
 {
     /**

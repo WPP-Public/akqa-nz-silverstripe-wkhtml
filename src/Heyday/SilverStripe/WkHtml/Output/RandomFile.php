@@ -3,7 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
-use RandomGenerator;
+use SilverStripe\Security\RandomGenerator;
 
 /**
  * Class RandomFile

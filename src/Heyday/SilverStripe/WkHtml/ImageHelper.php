@@ -2,11 +2,13 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
+use SilverStripe\Core\Extension;
+
 /**
  * Class ImageHelper
  * @package Heyday\SilverStripe\WkHtml
  */
-class ImageHelper extends \DataExtension
+class ImageHelper extends Extension
 {
     /**
      * @return mixed

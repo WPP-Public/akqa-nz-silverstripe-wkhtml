@@ -2,7 +2,7 @@
 
 namespace Heyday\SilverStripe\WkHtml\Output;
 
-use SS_HTTPResponse;
+use SilverStripe\Control\HTTPResponse as SS_HTTPResponse;
 
 /**
  * Class Response
