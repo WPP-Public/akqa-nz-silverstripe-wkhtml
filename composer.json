@@ -4,8 +4,13 @@
 	"type": "silverstripe-module",
 	"license": "MIT",
 	"autoload": {
-		"psr-0": {
-			"Heyday\\SilverStripe\\WkHtml": "src/"
+		"psr-4": {
+			"Heyday\\SilverStripe\\WkHtml\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Heyday\\SilverStripe\\WkHtml\\": "tests/"
 		}
 	},
 	"require": {
