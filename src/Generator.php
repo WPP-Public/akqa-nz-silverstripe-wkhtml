@@ -5,8 +5,11 @@ namespace Heyday\SilverStripe\WkHtml;
 use Heyday\SilverStripe\WkHtml\Input\InputInterface;
 use Heyday\SilverStripe\WkHtml\Output\OutputInterface;
 use Knp\Snappy\GeneratorInterface;
+use Knp\Snappy\Image;
+use Knp\Snappy\Pdf;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Injector\Injector;
 
 class Generator
 {
@@ -43,6 +46,30 @@ class Generator
      * @var bool
      */
     protected $cacheOutput;
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param bool $cache
+     * @return static
+     */
+    public static function pdf(InputInterface $input, OutputInterface $output, $cache = true)
+    {
+        return static::create(Injector::inst()->get(Pdf::class),
+            $input, $output, $cache);
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param bool $cache
+     * @return static
+     */
+    public static function image(InputInterface $input, OutputInterface $output, $cache = true)
+    {
+        return static::create(Injector::inst()->get(Image::class),
+            $input, $output, $cache);
+    }
 
     /**
      * @param GeneratorInterface $generator

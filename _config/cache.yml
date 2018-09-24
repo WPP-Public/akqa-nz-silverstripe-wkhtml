@@ -1,3 +1,7 @@
+---
+Name: cache
+---
+
 SilverStripe\Core\Injector\Injector:
   Psr\SimpleCache\CacheInterface.wkhtml:
     factory: SilverStripe\Core\Cache\CacheFactory
