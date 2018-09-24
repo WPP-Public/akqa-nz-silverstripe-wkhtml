@@ -2,11 +2,13 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * Class StringTest
  * @package Heyday\SilverStripe\WkHtml\Input
  */
-class StringTest extends \PHPUnit_Framework_TestCase
+class StringTest extends SapphireTest
 {
     /**
      * @var TextString
@@ -17,7 +19,9 @@ class StringTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new TextString('test');
+        parent::setUp();
+
+        $this->object = TextString::create('test');
     }
     /**
      *

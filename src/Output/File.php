@@ -3,6 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
+use SilverStripe\Core\Injector\Injectable;
 
 /**
  * Class File
@@ -10,10 +11,13 @@ use Knp\Snappy\GeneratorInterface;
  */
 class File implements OutputInterface
 {
+    use Injectable;
+
     /**
      * @var bool
      */
     protected $overwrite = false;
+
     /**
      * @var bool
      */
@@ -42,7 +46,7 @@ class File implements OutputInterface
      */
     public function process($input, GeneratorInterface $generator)
     {
-        $generator->generateFromHtml($input, $this->path, array(), $this->overwrite);
+        $generator->generateFromHtml($input, $this->path, [], $this->overwrite);
         return $this->path;
     }
 }

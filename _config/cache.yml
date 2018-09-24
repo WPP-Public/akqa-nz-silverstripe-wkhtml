@@ -1,0 +1,5 @@
+SilverStripe\Core\Injector\Injector:
+  Psr\SimpleCache\CacheInterface.wkhtml:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: wkhtml

@@ -2,56 +2,79 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-use CacheCache\Cache;
 use Heyday\SilverStripe\WkHtml\Input\InputInterface;
 use Heyday\SilverStripe\WkHtml\Output\OutputInterface;
 use Knp\Snappy\GeneratorInterface;
+use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Core\Injector\Injectable;
 
 class Generator
 {
+    use Injectable;
+
+    /**
+     * @var array
+     */
+    private static $dependencies = [
+        'cache' => '%$' . CacheInterface::class . '.wkhtml',
+    ];
+
+    /**
+     * @var CacheInterface
+     */
+    public $cache;
+
     /**
      * @var \Knp\Snappy\GeneratorInterface
      */
     protected $generator;
+
     /**
      * @var Output\OutputInterface
      */
     protected $output;
+
     /**
      * @var Input\InputInterface
      */
     protected $input;
+
+    /**
+     * @var bool
+     */
+    protected $cacheOutput;
+
     /**
      * @param GeneratorInterface $generator
-     * @param InputInterface     $input
-     * @param OutputInterface    $output
-     * @param \CacheCache\Cache  $cache
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param bool $cache
      */
     public function __construct(
         GeneratorInterface $generator,
         InputInterface $input,
         OutputInterface $output,
-        Cache $cache = null
-    ) {
+        $cache = true
+    )
+    {
         $this->generator = $generator;
         $this->input = $input;
         $this->output = $output;
-        $this->cache = $cache;
+        $this->cacheOutput = $cache;
     }
+
     /**
      * Processes the pdf using the input and output that have been set.
      */
     public function process()
     {
-        if (null !== $this->cache) {
+        if ($this->cacheOutput && $this->cache) {
             $contents = $this->input->process();
-            if (!($output = $this->cache->load(md5($contents)))) {
-                $this->cache->save(
-                    $output = $this->output->process(
-                        $contents,
-                        $this->generator
-                    )
-                );
+            $key = md5($contents);
+
+            if (!($output = $this->cache->get($key))) {
+                $output = $this->output->process($contents, $this->generator);
+                $this->cache->set($key, $output);
             }
         } else {
             $output = $this->output->process(
@@ -59,15 +82,10 @@ class Generator
                 $this->generator
             );
         }
+
         return $output;
     }
-    /**
-     * @param \Knp\Snappy\GeneratorInterface $generator
-     */
-    public function setGenerator($generator)
-    {
-        $this->generator = $generator;
-    }
+
     /**
      * @return \Knp\Snappy\GeneratorInterface
      */
@@ -75,13 +93,15 @@ class Generator
     {
         return $this->generator;
     }
+
     /**
-     * @param \Heyday\SilverStripe\WkHtml\Input\InputInterface $input
+     * @param \Knp\Snappy\GeneratorInterface $generator
      */
-    public function setInput($input)
+    public function setGenerator($generator)
     {
-        $this->input = $input;
+        $this->generator = $generator;
     }
+
     /**
      * @return \Heyday\SilverStripe\WkHtml\Input\InputInterface
      */
@@ -89,13 +109,15 @@ class Generator
     {
         return $this->input;
     }
+
     /**
-     * @param \Heyday\SilverStripe\WkHtml\Output\OutputInterface $output
+     * @param \Heyday\SilverStripe\WkHtml\Input\InputInterface $input
      */
-    public function setOutput($output)
+    public function setInput($input)
     {
-        $this->output = $output;
+        $this->input = $input;
     }
+
     /**
      * @return \Heyday\SilverStripe\WkHtml\Output\OutputInterface
      */
@@ -103,19 +125,29 @@ class Generator
     {
         return $this->output;
     }
+
     /**
-     * @param \CacheCache\Cache $cache
+     * @param \Heyday\SilverStripe\WkHtml\Output\OutputInterface $output
      */
-    public function setCache($cache)
+    public function setOutput($output)
     {
-        $this->cache = $cache;
+        $this->output = $output;
     }
+
     /**
-     * @return \CacheCache\Cache
+     * @return CacheInterface
      */
     public function getCache()
     {
         return $this->cache;
+    }
+
+    /**
+     * @param CacheInterface $cache
+     */
+    public function setCache(CacheInterface $cache)
+    {
+        $this->cache = $cache;
     }
 }
 

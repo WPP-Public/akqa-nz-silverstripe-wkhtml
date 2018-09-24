@@ -3,6 +3,8 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Injector\Injectable;
 
 /**
  * Class Browser
@@ -10,21 +12,26 @@ use Knp\Snappy\GeneratorInterface;
  */
 class Browser implements OutputInterface
 {
+    use Injectable;
+
     /**
      * @var string
      */
     protected $filename;
+
     /**
-     * @var
+     * @var string
      */
     protected $contentType;
+
     /**
      * @var bool
      */
     protected $embed;
+
     /**
-     * @param      $filename
-     * @param      $contentType
+     * @param string $filename
+     * @param string $contentType
      * @param bool $embed
      * @throws \RuntimeException
      */
@@ -35,41 +42,35 @@ class Browser implements OutputInterface
         } else {
             throw new \RuntimeException('You must provide a filename');
         }
+
         $this->contentType = $contentType;
-        $this->embed = (bool) $embed;
+        $this->embed = (bool)$embed;
     }
 
     /**
-     * @param                    $input
+     * @param array|string $input
      * @param GeneratorInterface $generator
-     * @return Response
+     * @return HTTPResponse
      */
     public function process($input, GeneratorInterface $generator)
     {
         $contents = $generator->getOutputFromHtml($input);
 
-        $response = new HTTPResponse();
-        $response->setStatusCode(200);
+        $response = HTTPResponse::create($contents, 200);
         $response->addHeader('Content-Length', strlen($contents));
         $response->addHeader('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT');
         $response->addHeader('Last-Modified', gmdate('D, d M Y H:i:s') . ' GMT');
         $response->addHeader('Cache-Control', 'public, must-revalidate, max-age=0');
         $response->addHeader('Pragma', 'public');
+        $response->addHeader('Content-Type', $this->contentType);
 
         if ($this->embed) {
-            $response->addHeader('Content-Type', $this->contentType);
             $response->addHeader('Content-Disposition', 'inline; filename="' . $this->filename . '";');
         } else {
             $response->addHeader('Content-Description', 'File Transfer');
-            $response->addHeader('Content-Type', 'application/force-download');
-            $response->addHeader('Content-Type', 'application/octet-stream', false);
-            $response->addHeader('Content-Type', 'application/download', false);
-            $response->addHeader('Content-Type', $this->contentType, false);
             $response->addHeader('Content-Disposition', 'attachment; filename="' . $this->filename . '";');
             $response->addHeader('Content-Transfer-Encoding', 'binary');
         }
-
-        $response->setBody($contents);
 
         return $response;
     }

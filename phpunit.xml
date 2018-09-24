@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="tests/bootstrap.php"
+         bootstrap="vendor/silverstripe/framework/tests/bootstrap.php"
 >
     <testsuites>
         <testsuite name="SilverStripe WkHtml">

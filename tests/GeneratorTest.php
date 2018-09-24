@@ -2,14 +2,31 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+use Heyday\SilverStripe\WkHtml\Input\InputInterface;
+use Heyday\SilverStripe\WkHtml\Output\OutputInterface;
+use Knp\Snappy\GeneratorInterface;
+use SilverStripe\Dev\SapphireTest;
+
+class GeneratorTest extends SapphireTest
 {
     /**
      * @var Generator
      */
     protected $object;
+
+    /**
+     * @var OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
     protected $outputMock;
+
+    /**
+     * @var InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
     protected $inputMock;
+
+    /**
+     * @var GeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
     protected $generatorMock;
 
     /**
@@ -18,11 +35,13 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new Generator(
-            $this->generatorMock = $this->getMock('Knp\Snappy\GeneratorInterface'),
-            $this->inputMock = $this->getMock('Heyday\SilverStripe\WkHtml\Input\InputInterface'),
-            $this->outputMock = $this->getMock('Heyday\SilverStripe\WkHtml\Output\OutputInterface')
-        );
+        parent::setUp();
+
+        $this->generatorMock = $this->createMock(GeneratorInterface::class);
+        $this->inputMock = $this->createMock(InputInterface::class);
+        $this->outputMock = $this->createMock(OutputInterface::class);
+
+        $this->object = Generator::create($this->generatorMock, $this->inputMock, $this->outputMock);
     }
 
     public function testProcess()

@@ -2,7 +2,8 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
-use Director;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injectable;
 
 /**
  * Class Url
@@ -10,44 +11,45 @@ use Director;
  */
 class Url implements InputInterface
 {
+    use Injectable;
+
     /**
-     * @var bool
+     * @var bool|string
      */
     protected $url = false;
+
     /**
      * @var bool
      */
     protected $siteUrl = true;
+
     /**
-     * @param $url
+     * @param string $url
      */
     public function __construct($url)
     {
         $this->setUrl($url);
     }
+
     /**
      * @param $url
      * @throws \RuntimeException
      */
     public function setUrl($url)
     {
-        if (Director::is_site_url($url)) {
-            $this->siteUrl = true;
-        } elseif (Director::is_absolute_url($url)) {
-            $this->siteUrl = false;
-        } else {
-            throw new \RuntimeException('URL is not well formed');
-        }
+        $this->siteUrl = Director::is_site_url($url) || !Director::is_absolute_url($url);
         $this->url = $url;
     }
+
     /**
-     * @return string
+     * @return bool|false|mixed|string
+     * @throws \SilverStripe\Control\HTTPResponse_Exception
      */
     public function process()
     {
         if ($this->siteUrl) {
             ob_start();
-            Director::direct($this->url, \DataModel::inst());
+            Director::test($this->url)->output();
             return ob_get_clean();
         } else {
             return @file_get_contents($this->url);

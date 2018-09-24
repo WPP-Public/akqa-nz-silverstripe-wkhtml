@@ -3,7 +3,9 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
-use RandomGenerator;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Security\RandomGenerator;
 
 /**
  * Class RandomFile
@@ -11,6 +13,8 @@ use RandomGenerator;
  */
 class RandomFile implements OutputInterface
 {
+    use Injectable;
+
     /**
      * @var bool|string
      */
@@ -22,13 +26,15 @@ class RandomFile implements OutputInterface
      */
     public function __construct($dir)
     {
-        if (is_writable($dir)) {
-            $gen = new RandomGenerator;
-            $this->path = realpath($dir) . DIRECTORY_SEPARATOR . $gen->randomToken('sha1') . '.pdf';
-        } else {
+        if (!is_writable($dir)) {
             throw new \RuntimeException('Directory is not writable');
         }
+
+        /** @var RandomGenerator $gen */
+        $gen = Injector::inst()->create(RandomGenerator::class);
+        $this->path = realpath($dir) . DIRECTORY_SEPARATOR . $gen->randomToken('sha1') . '.pdf';
     }
+
     /**
      * @param                    $input
      * @param GeneratorInterface $generator

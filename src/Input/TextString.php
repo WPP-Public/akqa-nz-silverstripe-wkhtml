@@ -2,16 +2,21 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
+use SilverStripe\Core\Injector\Injectable;
+
 /**
  * Class TextString
  * @package Heyday\SilverStripe\WkHtml\Input
  */
 class TextString implements InputInterface
 {
+    use Injectable;
+
     /**
      * @var string
      */
     protected $string;
+
     /**
      * @param $string
      */
@@ -19,6 +24,7 @@ class TextString implements InputInterface
     {
         $this->string = $string;
     }
+
     /**
      * @return mixed
      */

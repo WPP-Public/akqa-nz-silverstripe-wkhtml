@@ -2,39 +2,54 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
-use SS_HTTPRequest;
-use SS_HTTPResponse;
-use Session;
-use ReflectionMethod;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Control\Session;
+use SilverStripe\Core\Injector\Injectable;
 
 /**
  * Takes a SS_HTTPRequest and produces html input for PDF
  */
 class Request implements InputInterface
 {
+    use Injectable;
+
     /**
-     * @var \SS_HTTPRequest
+     * @var HTTPRequest
      */
     protected $request;
+
     /**
-     * @var \Session
+     * @var Session
      */
     protected $session;
+
     /**
-     * @var \ReflectionMethod
+     * @var callable|null
      */
-    protected $handleMethod;
+    protected $handleMethod = null;
+
     /**
-     * @param \SS_HTTPRequest $request
-     * @param bool           $session
+     * @param HTTPRequest $request
+     * @param array|Session $session
      */
-    public function __construct(SS_HTTPRequest $request, $session = array())
+    public function __construct(HTTPRequest $request, $session = [])
     {
         $this->request = $request;
         $this->setSession($session);
     }
+
     /**
-     * @param $session
+     * @return Session
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param Session|array $session
      * @throws \RuntimeException
      */
     public function setSession($session)
@@ -47,26 +62,16 @@ class Request implements InputInterface
             throw new \RuntimeException('Session argument must be an array or a Session object');
         }
     }
-    /**
-     * @return \Session
-     */
-    public function getSession()
-    {
-        return $this->session;
-    }
+
     /**
      * @return string
      * @throws \RuntimeException
      */
     public function process()
     {
-        $result = $this->getHandleMethod()->invoke(
-            null,
-            $this->request,
-            $this->session,
-            \DataModel::inst()
-        );
-        if ($result instanceof SS_HTTPResponse) {
+        $result = call_user_func($this->getHandleMethod(), $this->request);
+
+        if ($result instanceof HTTPResponse) {
             ob_start();
             $result->output();
             return ob_get_clean();
@@ -76,23 +81,24 @@ class Request implements InputInterface
             throw new \RuntimeException('Can\'t handle output from request');
         }
     }
+
     /**
-     * @param ReflectionMethod $handleMethod
-     */
-    public function setHandleMethod(ReflectionMethod $handleMethod)
-    {
-        $this->handleMethod = $handleMethod;
-    }
-    /**
-     * @return ReflectionMethod
+     * @return callable
      */
     protected function getHandleMethod()
     {
-        if (!$this->handleMethod) {
-            $this->handleMethod = new ReflectionMethod('Director', 'handleRequest');
-            $this->handleMethod->setAccessible(true);
+        if ($this->handleMethod === null) {
+            $this->handleMethod = [Director::singleton(), 'handleRequest'];
         }
 
         return $this->handleMethod;
+    }
+
+    /**
+     * @param callable $handleMethod
+     */
+    public function setHandleMethod(callable $handleMethod)
+    {
+        $this->handleMethod = $handleMethod;
     }
 }
