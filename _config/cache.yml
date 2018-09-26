@@ -1,5 +1,5 @@
 ---
-Name: cache
+Name: wkhtmlcache
 ---
 
 SilverStripe\Core\Injector\Injector:
