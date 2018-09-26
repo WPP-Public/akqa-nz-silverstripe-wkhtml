@@ -4,7 +4,7 @@
 
 This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtmltopdf/).
 
-A SilverStripe `2.4` version is available in the `1.0` branch.
+A `SilverStripe 3` version is available as `^2.x`, and a SilverStripe `2.4` version is available as `^1.x`.
 
 ## Requirements
 
@@ -13,7 +13,7 @@ A SilverStripe `2.4` version is available in the `1.0` branch.
 
 ## Installation
 
-    $ composer require "heyday/silverstripe-wkhtml:~1.0.6"
+    $ composer require "heyday/silverstripe-wkhtml:^3"
 
 ## How to use
 
@@ -30,7 +30,7 @@ Four things are required to generate a pdf or an image:
 - TextString (content is specified by a string)
 - Template (generates content from a SilverStripe template)
 - Url (generates content from a GET request to a Url)
-- Viewer (generates contetn from an SSViewer instance)
+- Viewer (generates content from an SSViewer instance)
 
 ### Available Outputs
 
@@ -48,12 +48,27 @@ Four things are required to generate a pdf or an image:
 
 ### Full example (from a controller action)
 
+```yaml
+SilverStripe\Core\Injector\Injector:
+  # Create PDF generator as an injector service
+  # This allows you to specify the binary path once and have it set up
+  # automatically by getting the service from the injector.
+  Knp\Snappy\Pdf:
+    constructor:
+      - '/bin/wkhtmltopdf' # Path to your WKTHMLTOPDF binary. Use '`SOME_ENV_VAR`' to define the binary path in .env
+```
+
 ```php
 use Heyday\SilverStripe\WkHtml;
-$generator = new WkHtml\Generator(
-    new \Knp\Snappy\Pdf('/pathto/wkhtmltopdf'),
-    new WkHtml\Input\Url('/'),
-    new WkHtml\Output\Browser('test.pdf', 'application/pdf')
+use SilverStripe\Core\Injector\Injector;
+
+$generator = WkHtml\Generator::create(
+    // Use Injector->get(Pdf::class) if you don't need to modify options
+    // Use Injector->create() to create a transient service for modifications (e.g. setOption)
+    // Using Injector->get() and making changes will cause changes to be made for all uses of get(Pdf::class) for the entire request
+    Injector::inst()->create(\Knp\Snappy\Pdf::class),
+    WkHtml\Input\Url::create('/'),
+    WkHtml\Output\Browser::create('test.pdf', 'application/pdf')
 );
 return $generator->process();
 ```
@@ -63,68 +78,54 @@ return $generator->process();
 #### Request
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\Request(
-    new SS_HTTPRequest('GET', '/')
+\Heyday\SilverStripe\WkHtml\Input\Request::create(
+    // Controller::curr()->getRequest() is also an option
+    Injector::inst()->get(\SilverStripe\Control\HTTPRequest::class)
 );
 ```
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\Request(
-    new SS_HTTPRequest('GET', '/'),
-    new Session(
-        array(
-            'arg' => 'value'
-        )
-    )
+\Heyday\SilverStripe\WkHtml\Input\Request::create(
+    Injector::inst()->get(\SilverStripe\Control\HTTPRequest::class),
+    new Session([
+        'arg' => 'value',
+    ])
 );
 ```
 
 #### String
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\TextString(
-    <<<HTML
+$html = <<<HTML
 <h1>Title</h1>
-HTML
-);
+HTML;
+\Heyday\SilverStripe\WkHtml\Input\TextString::create($html);
 ```
 
 #### Template
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\Template(
-    'MyTemplate'
-);
-```
+\Heyday\SilverStripe\WkHtml\Input\Template::create('MyTemplate');
 
-```php
-new \Heyday\SilverStripe\WkHtml\Input\Template(
+\Heyday\SilverStripe\WkHtml\Input\Template::create(
     'MyTemplate',
-    array(
-        'Var' => 'Hello'
-    )
+    [
+        'Var' => 'Hello',
+    ]
 );
-```
 
-```php
-new \Heyday\SilverStripe\WkHtml\Input\Template(
+\Heyday\SilverStripe\WkHtml\Input\Template::create(
     'MyTemplate',
-    new ArrayData(
-        array(
-            'Var' => 'Hello'
-        )
-    )
+    ArrayData::create([
+        'Var' => 'Hello',
+    ])
 );
-```
 
-```php
-new \Heyday\SilverStripe\WkHtml\Input\Template(
+\Heyday\SilverStripe\WkHtml\Input\Template::create(
     '$Var World',
-    new ArrayData(
-        array(
-            'Var' => 'Hello'
-        )
-    ),
+    ArrayData::create([
+        'Var' => 'Hello',
+    ]),
     true
 );
 ```
@@ -132,28 +133,22 @@ new \Heyday\SilverStripe\WkHtml\Input\Template(
 #### Viewer
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\Viewer(
-    new SSViewer(
-        array(
-            'Template'
-        )
-    ),
-    new ArrayData(
-        array(
-            'Var' => 'Hello'
-        )
-    )
+\Heyday\SilverStripe\WkHtml\Input\Viewer::create(
+    SSViewer::create([
+        'Template',
+    ]),
+    ArrayData::create([
+        'Var' => 'Hello',
+    ])
 );
 ```
 
 #### Url
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Input\Url('/');
-```
+\Heyday\SilverStripe\WkHtml\Input\Url::create('/');
 
-```php
-new \Heyday\SilverStripe\WkHtml\Input\Url('http://google.co.nz/');
+\Heyday\SilverStripe\WkHtml\Input\Url::create('http://google.co.nz/');
 ```
 
 ### Outputs
@@ -161,39 +156,36 @@ new \Heyday\SilverStripe\WkHtml\Input\Url('http://google.co.nz/');
 #### Browser
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Output\Browser('test.pdf', 'application/pdf'); // Force download
-```
+\Heyday\SilverStripe\WkHtml\Output\Browser::create('test.pdf', 'application/pdf'); // Force download
 
-```php
-new \Heyday\SilverStripe\WkHtml\Output\Browser('test.pdf', 'application/pdf', true); // Embeds
+\Heyday\SilverStripe\WkHtml\Output\Browser::create('test.pdf', 'application/pdf', true); // Embeds
 ```
 
 #### File
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Output\File(BASE_PATH . '/test.pdf');
-```
+\Heyday\SilverStripe\WkHtml\Output\File::create(BASE_PATH . '/test.pdf');
 
-```php
-new \Heyday\SilverStripe\WkHtml\Output\File(BASE_PATH . '/test.pdf', true); // Overwrite
+\Heyday\SilverStripe\WkHtml\Output\File::create(BASE_PATH . '/test.pdf', true); // Overwrite
 ```
 
 #### Random File
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Output\RandomFile(BASE_PATH);
+\Heyday\SilverStripe\WkHtml\Output\RandomFile::create(BASE_PATH);
 ```
 
 #### String
 
 ```php
-new \Heyday\SilverStripe\WkHtml\Output\TextString();
+\Heyday\SilverStripe\WkHtml\Output\TextString::create();
 ```
 
 ##Unit Testing
-
-    $ composer install --dev
-    $ phpunit
+```bash
+$ composer install
+$ phpunit
+```
 
 ## License
 
