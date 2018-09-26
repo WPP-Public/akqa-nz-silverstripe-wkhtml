@@ -51,24 +51,24 @@ class Generator
      * @param InputInterface $input
      * @param OutputInterface $output
      * @param bool $cache
+     * @param string $pdfGeneratorSpec
      * @return static
      */
-    public static function pdf(InputInterface $input, OutputInterface $output, $cache = true)
+    public static function pdf(InputInterface $input, OutputInterface $output, $cache = true, $pdfGeneratorSpec = Pdf::class)
     {
-        return static::create(Injector::inst()->get(Pdf::class),
-            $input, $output, $cache);
+        return static::create(Injector::inst()->get($pdfGeneratorSpec), $input, $output, $cache);
     }
 
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
      * @param bool $cache
+     * @param string $imageGeneratorSpec
      * @return static
      */
-    public static function image(InputInterface $input, OutputInterface $output, $cache = true)
+    public static function image(InputInterface $input, OutputInterface $output, $cache = true, $imageGeneratorSpec = Image::class)
     {
-        return static::create(Injector::inst()->get(Image::class),
-            $input, $output, $cache);
+        return static::create(Injector::inst()->get($imageGeneratorSpec), $input, $output, $cache);
     }
 
     /**
