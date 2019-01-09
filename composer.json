@@ -1,28 +1,35 @@
 {
 	"name": "heyday/silverstripe-wkhtml",
 	"description": "Provides Wkhtml functionality in SilverStripe",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"license": "MIT",
 	"autoload": {
-		"psr-0": {
-			"Heyday\\SilverStripe\\WkHtml": "src/"
+		"psr-4": {
+			"Heyday\\SilverStripe\\WkHtml\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Heyday\\SilverStripe\\WkHtml\\": "tests/"
 		}
 	},
 	"require": {
-		"composer/installers": "~1.0",
-		"knplabs/knp-snappy": "~0.2.0",
-		"symfony/process": "~2.2",
-		"maximebf/cachecache": "~1.0"
+		"php": ">=5.6",
+		"knplabs/knp-snappy": "^1",
+		"silverstripe/framework": "^4"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~3.7",
-		"symfony/class-loader": "~2.2",
-		"silverstripe/framework": "3.1.*@dev",
-		"mikey179/vfsStream": "dev-master"
+		"phpunit/phpunit": "^5.7",
+		"mikey179/vfsStream": "^1"
 	},
 	"extra": {
 		"branch-alias": {
 			"dev-master": "1.1.x-dev"
+		}
+	},
+	"config": {
+		"preferred-install": {
+			"silverstripe/framework": "source"
 		}
 	}
 }
