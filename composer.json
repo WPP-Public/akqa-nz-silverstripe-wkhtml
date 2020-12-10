@@ -20,7 +20,7 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^5.7",
-		"mikey179/vfsStream": "^1"
+		"mikey179/vfsstream": "^1"
 	},
 	"extra": {
 		"branch-alias": {
