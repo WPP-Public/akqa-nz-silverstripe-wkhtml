@@ -2,11 +2,10 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-use PHPUnit_Framework_MockObject_Stub;
-use PHPUnit_Framework_MockObject_Invocation;
-use PHPUnit_Util_Type;
+use PHPUnit\Framework\MockObject\Stub\Stub;
+use PHPUnit\Framework\MockObject\Invocation;
 
-class EchoValue implements PHPUnit_Framework_MockObject_Stub
+class EchoValue implements Stub
 {
     protected $value;
 
@@ -15,16 +14,16 @@ class EchoValue implements PHPUnit_Framework_MockObject_Stub
         $this->value = $value;
     }
 
-    public function invoke(PHPUnit_Framework_MockObject_Invocation $invocation)
+    public function invoke(Invocation $invocation)
     {
         echo $this->value;
     }
 
-    public function toString()
+    public function toString(): string
     {
         return sprintf(
             'echo user-specified value %s',
-            PHPUnit_Util_Type::toString($this->value)
+            $this->value
         );
     }
 }

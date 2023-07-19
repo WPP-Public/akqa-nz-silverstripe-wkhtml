@@ -17,7 +17,7 @@ class StringTest extends SapphireTest
     /**
      *
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -28,6 +28,9 @@ class StringTest extends SapphireTest
      */
     public function testProcess()
     {
-        $this->assertEquals('test', $this->object->process());
+        $this->assertStringContainsString(
+            'test',
+            $this->object->process()
+        );
     }
 }

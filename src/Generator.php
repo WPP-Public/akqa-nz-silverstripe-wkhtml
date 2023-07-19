@@ -82,8 +82,7 @@ class Generator
         InputInterface $input,
         OutputInterface $output,
         $cache = true
-    )
-    {
+    ) {
         $this->generator = $generator;
         $this->input = $input;
         $this->output = $output;
@@ -97,7 +96,7 @@ class Generator
     {
         if ($this->cacheOutput && $this->cache) {
             $contents = $this->input->process();
-            $key = md5($contents);
+            $key = md5($contents ?? '');
 
             if (!($output = $this->cache->get($key))) {
                 $output = $this->output->process($contents, $this->generator);
@@ -177,4 +176,3 @@ class Generator
         $this->cache = $cache;
     }
 }
-

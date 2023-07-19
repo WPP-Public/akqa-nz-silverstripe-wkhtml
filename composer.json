@@ -1,35 +1,35 @@
 {
-	"name": "heyday/silverstripe-wkhtml",
-	"description": "Provides Wkhtml functionality in SilverStripe",
-	"type": "silverstripe-vendormodule",
-	"license": "MIT",
-	"autoload": {
-		"psr-4": {
-			"Heyday\\SilverStripe\\WkHtml\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Heyday\\SilverStripe\\WkHtml\\": "tests/"
-		}
-	},
-	"require": {
-		"php": ">=5.6",
-		"knplabs/knp-snappy": "^1",
-		"silverstripe/framework": "^4"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^5.7",
-		"mikey179/vfsstream": "^1"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.1.x-dev"
-		}
-	},
-	"config": {
-		"preferred-install": {
-			"silverstripe/framework": "source"
-		}
-	}
+    "name": "heyday/silverstripe-wkhtml",
+    "description": "Provides Wkhtml functionality in SilverStripe",
+    "type": "silverstripe-vendormodule",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Heyday\\SilverStripe\\WkHtml\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Heyday\\SilverStripe\\WkHtml\\": "tests/"
+        }
+    },
+    "require": {
+        "knplabs/knp-snappy": "^1",
+        "silverstripe/framework": "^5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mikey179/vfsstream": "^1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
+    }
 }
