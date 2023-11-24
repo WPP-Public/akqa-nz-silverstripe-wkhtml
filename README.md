@@ -1,19 +1,14 @@
 # Silverstripe Wkhtml - by Heyday
 
-[![Build Status](https://travis-ci.org/heyday/silverstripe-wkhtml.png?branch=master)](https://travis-ci.org/heyday/silverstripe-wkhtml)
-
 This module provides a SilverStripe-centric wrapper for [Snappy](https://github.com/KnpLabs/snappy) and [wkhtml](http://code.google.com/p/wkhtmltopdf/).
-
-A `SilverStripe 3` version is available as `^2.x`, and a SilverStripe `2.4` version is available as `^1.x`.
 
 ## Requirements
 
-* [Composer](http://getcomposer.org/)
 * [Wkhtml binary](http://code.google.com/p/wkhtmltopdf/downloads/list) either wkhtmltopdf or wkhtmltoimage
 
 ## Installation
 
-    $ composer require "heyday/silverstripe-wkhtml:^3"
+    $ composer require "heyday/silverstripe-wkhtml"
 
 ## How to use
 
@@ -181,7 +176,7 @@ HTML;
 \Heyday\SilverStripe\WkHtml\Output\TextString::create();
 ```
 
-##Unit Testing
+## Unit Testing
 ```bash
 $ composer install
 $ phpunit
