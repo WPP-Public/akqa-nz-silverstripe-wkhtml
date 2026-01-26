@@ -2,16 +2,13 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-use PHPUnit\Framework\MockObject\Stub\Stub;
 use PHPUnit\Framework\MockObject\Invocation;
+use PHPUnit\Framework\MockObject\Stub\Stub;
 
 class EchoValue implements Stub
 {
-    protected $value;
-
-    public function __construct($value)
+    public function __construct(protected $value)
     {
-        $this->value = $value;
     }
 
     public function invoke(Invocation $invocation)

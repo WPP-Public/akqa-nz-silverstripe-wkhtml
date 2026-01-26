@@ -4,6 +4,7 @@ namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
 use org\bovigo\vfs\vfsStream;
+use RuntimeException;
 use SilverStripe\Dev\SapphireTest;
 
 /**
@@ -16,7 +17,7 @@ class FileTest extends SapphireTest
      */
     public function testFileExists()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('File already exists.');
 
         vfsStream::setup(
@@ -34,7 +35,7 @@ class FileTest extends SapphireTest
      */
     public function testDirectoryNotWritable()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Directory is not writable.');
 
         vfsStream::setup(

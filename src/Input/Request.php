@@ -2,6 +2,7 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
+use RuntimeException;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
@@ -50,7 +51,7 @@ class Request implements InputInterface
 
     /**
      * @param Session|array $session
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function setSession($session)
     {
@@ -59,13 +60,13 @@ class Request implements InputInterface
         } elseif (is_array($session)) {
             $this->session = new Session($session);
         } else {
-            throw new \RuntimeException('Session argument must be an array or a Session object');
+            throw new RuntimeException('Session argument must be an array or a Session object');
         }
     }
 
     /**
      * @return string
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function process()
     {
@@ -78,7 +79,7 @@ class Request implements InputInterface
         } elseif (is_string($result)) {
             return $result;
         } else {
-            throw new \RuntimeException('Can\'t handle output from request');
+            throw new RuntimeException("Can't handle output from request");
         }
     }
 

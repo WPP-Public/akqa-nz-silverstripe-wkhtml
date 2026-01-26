@@ -8,7 +8,7 @@ interface OutputInterface
 {
     /**
      * @param                                $input
-     * @param \Knp\Snappy\GeneratorInterface $generator
+     * @param GeneratorInterface $generator
      * @return mixed
      */
     public function process($input, GeneratorInterface $generator);

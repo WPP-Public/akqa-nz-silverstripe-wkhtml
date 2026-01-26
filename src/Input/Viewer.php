@@ -3,11 +3,12 @@
 namespace Heyday\SilverStripe\WkHtml\Input;
 
 use Heyday\SilverStripe\WkHtml\TemplateHelper;
+use RuntimeException;
 use SilverStripe\Core\Injector\Injectable;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
+use SilverStripe\Model\ModelData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
-use SilverStripe\View\ViewableData;
 
 /**
  * Class Viewer
@@ -18,7 +19,7 @@ class Viewer implements InputInterface
     use Injectable;
 
     /**
-     * @var ViewableData|array|null
+     * @var ModelData|array|null
      */
     protected $data = null;
 
@@ -29,7 +30,7 @@ class Viewer implements InputInterface
 
     /**
      * @param SSViewer $viewer
-     * @param ViewableData|array|null $data
+     * @param ModelData|array|null $data
      */
     public function __construct(SSViewer $viewer, $data = null)
     {
@@ -41,7 +42,7 @@ class Viewer implements InputInterface
     }
 
     /**
-     * @return array|null|ViewableData
+     * @return array|null|ModelData
      */
     public function getData()
     {
@@ -49,17 +50,17 @@ class Viewer implements InputInterface
     }
 
     /**
-     * @param ViewableData|array $data
-     * @throws \RuntimeException
+     * @param ModelData|array $data
+     * @throws RuntimeException
      */
     public function setData($data)
     {
-        if ($data instanceof ViewableData) {
+        if ($data instanceof ModelData) {
             $this->data = $data;
         } elseif (is_array($data)) {
             $this->data = ArrayData::create($data);
         } else {
-            throw new \RuntimeException('Inputted data type not supported');
+            throw new RuntimeException('Inputted data type not supported');
         }
     }
 
@@ -68,7 +69,7 @@ class Viewer implements InputInterface
      */
     public function process()
     {
-        if ($this->data instanceof ViewableData) {
+        if ($this->data instanceof ModelData) {
             $this->data->setField('Helper', TemplateHelper::create());
         }
 

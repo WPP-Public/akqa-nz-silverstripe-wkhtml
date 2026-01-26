@@ -28,7 +28,7 @@ class Generator
     public $cache;
 
     /**
-     * @var \Knp\Snappy\GeneratorInterface
+     * @var GeneratorInterface
      */
     protected $generator;
 
@@ -41,11 +41,6 @@ class Generator
      * @var Input\InputInterface
      */
     protected $input;
-
-    /**
-     * @var bool
-     */
-    protected $cacheOutput;
 
     /**
      * @param InputInterface $input
@@ -75,18 +70,17 @@ class Generator
      * @param GeneratorInterface $generator
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @param bool $cache
+     * @param bool $cacheOutput
      */
     public function __construct(
         GeneratorInterface $generator,
         InputInterface $input,
         OutputInterface $output,
-        $cache = true
+        protected $cacheOutput = true
     ) {
         $this->generator = $generator;
         $this->input = $input;
         $this->output = $output;
-        $this->cacheOutput = $cache;
     }
 
     /**
@@ -113,7 +107,7 @@ class Generator
     }
 
     /**
-     * @return \Knp\Snappy\GeneratorInterface
+     * @return GeneratorInterface
      */
     public function getGenerator()
     {
@@ -121,7 +115,7 @@ class Generator
     }
 
     /**
-     * @param \Knp\Snappy\GeneratorInterface $generator
+     * @param GeneratorInterface $generator
      */
     public function setGenerator($generator)
     {
@@ -129,7 +123,7 @@ class Generator
     }
 
     /**
-     * @return \Heyday\SilverStripe\WkHtml\Input\InputInterface
+     * @return InputInterface
      */
     public function getInput()
     {
@@ -137,7 +131,7 @@ class Generator
     }
 
     /**
-     * @param \Heyday\SilverStripe\WkHtml\Input\InputInterface $input
+     * @param InputInterface $input
      */
     public function setInput($input)
     {
@@ -145,7 +139,7 @@ class Generator
     }
 
     /**
-     * @return \Heyday\SilverStripe\WkHtml\Output\OutputInterface
+     * @return OutputInterface
      */
     public function getOutput()
     {
@@ -153,7 +147,7 @@ class Generator
     }
 
     /**
-     * @param \Heyday\SilverStripe\WkHtml\Output\OutputInterface $output
+     * @param OutputInterface $output
      */
     public function setOutput($output)
     {
