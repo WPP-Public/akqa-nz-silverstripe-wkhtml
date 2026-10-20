@@ -14,6 +14,7 @@ class StringTest extends SapphireTest
      * @var TextString
      */
     protected $object;
+
     /**
      *
      */
@@ -23,6 +24,7 @@ class StringTest extends SapphireTest
 
         $this->object = TextString::create('test');
     }
+
     /**
      *
      */

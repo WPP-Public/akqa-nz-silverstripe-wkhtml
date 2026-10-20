@@ -3,7 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Input;
 
 use SilverStripe\Core\Injector\Injectable;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\View\SSViewer;
 use SilverStripe\View\SSViewer_FromString;
 
@@ -24,8 +24,7 @@ class Template extends Viewer
         $template,
         $data = null,
         $templateFromString = false
-    )
-    {
+    ) {
         parent::__construct(
             $templateFromString ? SSViewer_FromString::create($template) : SSViewer::create($template),
             $data

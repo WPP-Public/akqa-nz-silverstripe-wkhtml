@@ -3,6 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
+use RuntimeException;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Injector\Injectable;
 
@@ -20,11 +21,6 @@ class Browser implements OutputInterface
     protected $filename;
 
     /**
-     * @var string
-     */
-    protected $contentType;
-
-    /**
      * @var bool
      */
     protected $embed;
@@ -33,17 +29,16 @@ class Browser implements OutputInterface
      * @param string $filename
      * @param string $contentType
      * @param bool $embed
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
-    public function __construct($filename, $contentType, $embed = false)
+    public function __construct($filename, protected $contentType, $embed = false)
     {
         if (is_string($filename)) {
             $this->filename = $filename;
         } else {
-            throw new \RuntimeException('You must provide a filename');
+            throw new RuntimeException('You must provide a filename');
         }
 
-        $this->contentType = $contentType;
         $this->embed = (bool)$embed;
     }
 

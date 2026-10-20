@@ -13,16 +13,11 @@ class TextString implements InputInterface
     use Injectable;
 
     /**
-     * @var string
-     */
-    protected $string;
-
-    /**
      * @param $string
+     * @param string $string
      */
-    public function __construct($string)
+    public function __construct(protected $string)
     {
-        $this->string = $string;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
+use RuntimeException;
 use SilverStripe\Core\Injector\Injectable;
 
 /**
@@ -30,12 +31,13 @@ class File implements OutputInterface
     public function __construct($path, $overwrite = false)
     {
         if (file_exists($path) && !$overwrite) {
-            throw new \RuntimeException('File already exists.');
-        } elseif (!is_writable(dirname($path))) {
-            throw new \RuntimeException('Directory is not writable.');
+            throw new RuntimeException('File already exists.');
+        } elseif (!is_writable(dirname((string) $path))) {
+            throw new RuntimeException('Directory is not writable.');
         } else {
             $this->path = $path;
         }
+
         $this->overwrite = $overwrite;
     }
 

@@ -3,15 +3,17 @@
 namespace Heyday\SilverStripe\WkHtml;
 
 use SilverStripe\Assets\File;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * Class ImageHelper
  * @package Heyday\SilverStripe\WkHtml
  * @property File|null $owner
  */
-class ImageHelper extends DataExtension
+class ImageHelper extends Extension
 {
+    public $owner;
+
     /**
      * @return mixed
      */

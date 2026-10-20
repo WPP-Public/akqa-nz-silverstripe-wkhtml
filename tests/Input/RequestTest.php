@@ -2,7 +2,10 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
+use Closure;
 use Heyday\SilverStripe\WkHtml\EchoValue;
+use ReflectionMethod;
+use RuntimeException;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
@@ -17,7 +20,7 @@ class RequestTest extends SapphireTest
     protected $object;
 
     /**
-     * @var \ReflectionMethod|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReflectionMethod|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $handleMethod;
 
@@ -31,7 +34,7 @@ class RequestTest extends SapphireTest
      */
     public function testSetSessionException()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->object->setSession('test');
     }
 
@@ -64,13 +67,11 @@ class RequestTest extends SapphireTest
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     protected function getHandleMethodCallable()
     {
-        return function (HTTPRequest $request) {
-            return $this->handleMethod->invoke(Director::singleton(), $request);
-        };
+        return fn(HTTPRequest $request) => $this->handleMethod->invoke(Director::singleton(), $request);
     }
 
     public function testProcessResponse()
@@ -95,7 +96,7 @@ class RequestTest extends SapphireTest
      */
     public function testProcessBadReturn()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("Can't handle output from request");
 
         $this->handleMethod->expects($this->any())
@@ -119,7 +120,7 @@ class RequestTest extends SapphireTest
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->handleMethod = $this->getMockBuilder(\ReflectionMethod::class)
+        $this->handleMethod = $this->getMockBuilder(ReflectionMethod::class)
             ->disableOriginalConstructor()
             ->getMock();
 

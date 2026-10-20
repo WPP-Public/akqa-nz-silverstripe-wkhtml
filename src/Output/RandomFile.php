@@ -3,6 +3,7 @@
 namespace Heyday\SilverStripe\WkHtml\Output;
 
 use Knp\Snappy\GeneratorInterface;
+use RuntimeException;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Security\RandomGenerator;
@@ -22,12 +23,12 @@ class RandomFile implements OutputInterface
 
     /**
      * @param $dir
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function __construct($dir)
     {
         if (!is_writable($dir)) {
-            throw new \RuntimeException('Directory is not writable');
+            throw new RuntimeException('Directory is not writable');
         }
 
         /** @var RandomGenerator $gen */

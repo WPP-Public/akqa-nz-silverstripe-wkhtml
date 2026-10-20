@@ -2,7 +2,9 @@
 
 namespace Heyday\SilverStripe\WkHtml\Input;
 
+use RuntimeException;
 use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPResponse_Exception;
 use SilverStripe\Core\Injector\Injectable;
 
 /**
@@ -33,7 +35,7 @@ class Url implements InputInterface
 
     /**
      * @param $url
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function setUrl($url)
     {
@@ -43,7 +45,7 @@ class Url implements InputInterface
 
     /**
      * @return bool|false|mixed|string
-     * @throws \SilverStripe\Control\HTTPResponse_Exception
+     * @throws HTTPResponse_Exception
      */
     public function process()
     {

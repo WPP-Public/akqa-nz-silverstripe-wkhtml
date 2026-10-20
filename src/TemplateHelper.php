@@ -2,13 +2,13 @@
 
 namespace Heyday\SilverStripe\WkHtml;
 
-use SilverStripe\View\ViewableData;
+use SilverStripe\Model\ModelData;
 
 /**
  * Class TemplateHelper
  * @package Heyday\SilverStripe\WkHtml
  */
-class TemplateHelper extends ViewableData
+class TemplateHelper extends ModelData
 {
     /**
      * @param string $css
@@ -35,7 +35,7 @@ class TemplateHelper extends ViewableData
             $content = file_get_contents($path);
 
             if ($content) {
-                return "data:{$mime};base64," . base64_encode($content);
+                return sprintf('data:%s;base64,', $mime) . base64_encode($content);
             }
         }
 
