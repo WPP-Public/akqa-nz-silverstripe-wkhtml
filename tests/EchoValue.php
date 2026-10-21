@@ -11,9 +11,10 @@ class EchoValue implements Stub
     {
     }
 
-    public function invoke(Invocation $invocation)
+    public function invoke(Invocation $invocation): mixed
     {
         echo $this->value;
+        return null;
     }
 
     public function toString(): string

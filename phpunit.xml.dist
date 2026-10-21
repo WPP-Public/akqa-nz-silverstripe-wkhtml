@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit backupGlobals="false" backupStaticAttributes="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="vendor/silverstripe/framework/tests/bootstrap.php">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd" backupGlobals="false" colors="true" processIsolation="false" stopOnFailure="false" bootstrap="vendor/silverstripe/framework/tests/bootstrap.php">
     <testsuites>
-        <testsuite name="SilverStripe WkHtml">
+        <testsuite name="SilverStripe_WkHtml">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
